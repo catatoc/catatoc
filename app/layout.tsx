@@ -60,13 +60,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <ClientWrapper assets={assetsToLoad}>
               <div className="relative flex min-h-screen flex-col overflow-x-hidden">
                 <SiteHeader />
-                <main className="flex-1 p-4 sm:p-6 md:p-8 lg:p-12">
-                  {children}
-                </main>
+                <main className="flex-1 px-4">{children}</main>
                 <TailwindIndicator />
                 <Chatbot />
               </div>
-              <Cactus /> {/* Incluye el componente Cactus aquí */}
+              {/* <Cactus /> */}
             </ClientWrapper>
           </ThemeProvider>
         </body>

@@ -44,8 +44,8 @@ export default function MusicPage() {
         />
       </div>
       <div className="md:block">
-        <Menu />
-        <div className="border-t">
+        {/* <Menu /> */}
+        <div className="">
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">
               <Sidebar playlists={playlists} className="hidden lg:block" />
@@ -53,7 +53,7 @@ export default function MusicPage() {
                 <div className="h-full px-4 py-6 lg:px-8">
                   <Tabs defaultValue="music" className="h-full space-y-6">
                     <div className="space-between flex items-center justify-between">
-                      <TabsList>
+                      <TabsList className="md:hidden">
                         <TabsTrigger value="music" className="relative">
                           Innovación
                         </TabsTrigger>

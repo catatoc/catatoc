@@ -25,7 +25,7 @@ export function SiteHeader() {
                   variant: "ghost",
                 })}
               >
-                <Linkedin className="size-5 fill-current" />
+                <Linkedin className="hidden md:block size-5 fill-current" />
                 <span className="sr-only">LinkedIn</span>
               </div>
             </Link>

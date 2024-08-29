@@ -113,7 +113,7 @@ export function Sidebar({ className, playlists }: SidebarProps) {
           </div>
         </div>
       </div>
-      <div className="py-2">
+      <div className="py-2 hidden">
         <h2 className="relative px-7 text-lg font-semibold tracking-tight">
           Otras Secciones
         </h2>
