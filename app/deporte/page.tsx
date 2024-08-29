@@ -1,94 +1,168 @@
 "use client"
 
-import { useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import Image from "next/image"
-import { Engine } from "@tsparticles/engine"
-import Particles from "react-tsparticles"
-import { loadFull } from "tsparticles"
+import { Lightbulb } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import Leaderboard from "@/components/ui/leaderboard"
+import { Blockquote, BlockquoteAuthor } from "@/components/ui/quote"
 import FootballEntrance from "@/components/FootballEntrance"
 
 export default function SportsPage() {
+  const valoresDeporte = [
+    "Trabajo en Equipo",
+    "Disciplina",
+    "Liderazgo",
+    "Perseverancia",
+    "Resiliencia",
+  ]
+
+  const images = Array.from({ length: 15 }).map(
+    (_, index) => `/images/sports/sport${index + 1}.png`
+  )
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  // Manejar las flechas del teclado
+  const handleKeyDown = useCallback(
+    (event: { key: string }) => {
+      if (selectedImage) {
+        if (event.key === "ArrowRight") {
+          const nextIndex = (currentIndex + 1) % images.length
+          setSelectedImage(images[nextIndex])
+          setCurrentIndex(nextIndex)
+        } else if (event.key === "ArrowLeft") {
+          const prevIndex = (currentIndex - 1 + images.length) % images.length
+          setSelectedImage(images[prevIndex])
+          setCurrentIndex(prevIndex)
+        }
+      }
+    },
+    [selectedImage, currentIndex, images]
+  )
+
+  useEffect(() => {
+    if (selectedImage) {
+      window.addEventListener("keydown", handleKeyDown)
+    } else {
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [selectedImage, handleKeyDown])
+
   return (
-    <div className="relative h-screen">
+    <div className="relative min-h-screen p-8">
       <FootballEntrance />
-      <div className="relative z-10 hidden">
-        <Image
-          src="/images/sports-light.png"
-          width={1280}
-          height={1114}
-          alt="Deportes"
-          className="hidden dark:block"
-        />
-        <div className="p-8 md:block">
-          <Tabs defaultValue="overview" className="h-full space-y-6">
-            <div className="flex items-center justify-between">
-              <TabsList>
-                <TabsTrigger value="overview">Fútbol</TabsTrigger>
-                <TabsTrigger value="basketball">Baloncesto</TabsTrigger>
-                <TabsTrigger value="tennis">Tenis</TabsTrigger>
-              </TabsList>
-            </div>
 
-            {/* Sección Fútbol */}
-            <TabsContent value="overview" className="p-4">
-              <div className="space-y-4">
-                <h2 className="text-2xl font-semibold text-black">Fútbol</h2>
-                <p className="text-sm text-gray-600">
-                  Noticias y eventos recientes en el mundo del fútbol.
-                </p>
-              </div>
-              <Separator className="my-4" />
-              <ScrollArea className="w-full">
-                <div className="flex space-x-4 pb-4">
-                  {/* Contenido de Fútbol */}
-                </div>
-                <ScrollBar orientation="horizontal" />
-              </ScrollArea>
-            </TabsContent>
+      <div className="absolute mt-12 size-full">
+        <h1 className="mb-4 text-4xl font-bold">Mi Trayectoria Deportiva</h1>
+        <p className="mb-6">
+          Desde temprana edad, el deporte ha sido una parte fundamental de mi
+          vida. He aprendido valores como el trabajo en equipo, la disciplina, y
+          la perseverancia a través de múltiples disciplinas, incluyendo fútbol,
+          baloncesto, y atletismo.
+        </p>
 
-            {/* Sección Baloncesto */}
-            <TabsContent value="basketball" className="p-4">
-              <div className="space-y-4">
-                <h2 className="text-2xl font-semibold text-black">
-                  Baloncesto
-                </h2>
-                <p className="text-sm text-gray-600">
-                  Lo último en el mundo del baloncesto.
-                </p>
-              </div>
-              <Separator className="my-4" />
-              <ScrollArea className="w-full">
-                <div className="flex space-x-4 pb-4">
-                  {/* Contenido de Baloncesto */}
-                </div>
-                <ScrollBar orientation="horizontal" />
-              </ScrollArea>
-            </TabsContent>
+        <Leaderboard title="Valores en el Deporte" values={valoresDeporte} />
 
-            {/* Sección Tenis */}
-            <TabsContent value="tennis" className="p-4">
-              <div className="space-y-4">
-                <h2 className="text-2xl font-semibold text-black">Tenis</h2>
-                <p className="text-sm text-gray-600">
-                  Últimos torneos y resultados en tenis.
-                </p>
-              </div>
-              <Separator className="my-4" />
-              <ScrollArea className="w-full">
-                <div className="flex space-x-4 pb-4">
-                  {/* Contenido de Tenis */}
-                </div>
-                <ScrollBar orientation="horizontal" />
-              </ScrollArea>
-            </TabsContent>
-          </Tabs>
+        <Alert variant="success" className="my-6">
+          <Lightbulb className="size-4" />
+          <AlertTitle>Dato Curioso!</AlertTitle>
+          <AlertDescription>
+            El deporte no solo mejora la salud física, sino que también es clave
+            para el desarrollo de habilidades sociales y de liderazgo.
+          </AlertDescription>
+        </Alert>
+
+        <Blockquote>
+          El deporte tiene el poder de cambiar el mundo. Tiene el poder de
+          inspirar, de unir a las personas como pocas otras cosas.
+          <BlockquoteAuthor>Nelson Mandela</BlockquoteAuthor>
+        </Blockquote>
+
+        <div className="mt-12">
+          <h2 className="mb-4 text-3xl font-bold">Lecciones Aprendidas</h2>
+          <p className="mb-4">
+            El deporte me ha enseñado a superar desafíos, a trabajar en equipo y
+            a liderar con el ejemplo. Estas lecciones son aplicables no solo en
+            el campo de juego, sino en todos los aspectos de la vida.
+          </p>
+
+          {/* Carrusel con Auto Loop, Drag y Click */}
+          <h2 className="mb-4 text-3xl font-bold">Galería de Fotos</h2>
+          <Carousel
+            className="mx-auto w-full max-w-3xl"
+            opts={{
+              loop: true,
+              align: "start",
+              slidesToScroll: 1,
+              containScroll: "trimSnaps",
+            }}
+          >
+            <CarouselContent className="-ml-4 flex">
+              {images.map((src, index) => (
+                <CarouselItem
+                  key={index}
+                  className="shrink-0 basis-full pl-4 sm:basis-1/3"
+                  onClick={() => {
+                    setSelectedImage(src)
+                    setCurrentIndex(index)
+                  }}
+                >
+                  <div className="p-1">
+                    <Card>
+                      <CardContent className="flex aspect-square items-center justify-center p-6">
+                        <Image
+                          src={src}
+                          alt={`Foto ${index + 1}`}
+                          width={500}
+                          height={500}
+                          className="rounded-md shadow-md"
+                          objectFit="cover"
+                        />
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
+
+      {/* Modal para imagen seleccionada */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-8"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative">
+            <Image
+              src={selectedImage}
+              alt="Imagen seleccionada"
+              width={800}
+              height={800}
+              className="rounded-md"
+              objectFit="contain"
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

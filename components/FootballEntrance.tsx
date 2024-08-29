@@ -8,10 +8,11 @@ export default function FootballEntrance() {
       <div className="football">⚽</div>
       <style jsx>{`
         .football-container {
-          position: relative;
+          position: absolute;
           width: 100%;
           height: 100vh; /* Full screen height */
           overflow: hidden;
+          z-index: 1; /* Ensure it's above other content */
         }
 
         .football {

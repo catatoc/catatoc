@@ -31,6 +31,9 @@
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
 
+    --success: 146 50% 47%; /* Sea Green (hsl(146, 50%, 47%)) */
+    --success-foreground: 150 50% 95%; /* Near white for foreground (hsl(150, 50%, 95%)) */
+
     --ring: 215 20.2% 65.1%;
 
     --radius: 0.5rem;
@@ -64,6 +67,9 @@
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
+    --success: 146 50% 40%; /* Sea Green adjusted for dark mode (hsl(146, 50%, 40%)) */
+    --success-foreground: 150 50% 95%; /* Near white for foreground (hsl(150, 50%, 95%)) */
+
     --ring: 216 34% 17%;
 
     --radius: 0.5rem;
@@ -90,7 +96,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
