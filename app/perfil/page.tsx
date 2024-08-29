@@ -7,7 +7,6 @@ import { Carousel } from "@/components/ui/carousel"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { AlbumArtwork } from "@/components/album-artwork"
-import EmojiConfetti from "@/components/triggerConfetti"
 
 // Datos de logros
 const achievements = [
@@ -39,18 +38,15 @@ const familyPhotos = [
   // Añade más fotos según sea necesario
 ]
 
-const emoji = "⚽" // Usar la pelota de fútbol como emoji
-
 export default function ProfilePage() {
   const [selectedAchievement, setSelectedAchievement] = useState<any>(null)
-  const [showVideoBubble, setShowVideoBubble] = useState(false)
+  const [showVideoBubble, setShowVideoBubble] = useState(true)
+  const [isVideoVisible, setIsVideoVisible] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   // Mostrar la burbuja del video después de 5 segundos
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowVideoBubble(true)
-      // Intentar reproducir el video automáticamente con sonido
       if (videoRef.current) {
         videoRef.current.muted = false
         videoRef.current.play().catch((error) => {
@@ -64,11 +60,16 @@ export default function ProfilePage() {
   // Manejar el clic en la burbuja de video para activar el sonido si está silenciado
   const handleVideoBubbleClick = () => {
     if (videoRef.current) {
-      videoRef.current.muted = false // Activar el sonido
+      videoRef.current.muted = false
       videoRef.current.play().catch((error) => {
         console.error("Error al intentar reproducir el video:", error)
       })
     }
+  }
+
+  // Ocultar y mostrar el video
+  const toggleVideoVisibility = () => {
+    setIsVideoVisible((prev) => !prev)
   }
 
   return (
@@ -100,18 +101,13 @@ export default function ProfilePage() {
                   key={achievement.name}
                   onClick={() => setSelectedAchievement(achievement)}
                 >
-                  <EmojiConfetti
-                    key={achievement.name}
-                    emoji={emoji} // Aquí puedes usar "⚽" o cualquier emoji que desees
-                  >
-                    <AlbumArtwork
-                      album={achievement}
-                      className="w-[150px] shrink-0"
-                      aspectRatio="square"
-                      width={150}
-                      height={150}
-                    />
-                  </EmojiConfetti>
+                  <AlbumArtwork
+                    album={achievement}
+                    className="w-[150px] shrink-0"
+                    aspectRatio="square"
+                    width={150}
+                    height={150}
+                  />
                   <span className="absolute right-0 top-0 text-2xl">🏅</span>
                 </div>
               ))}
@@ -196,19 +192,41 @@ export default function ProfilePage() {
       {/* Burbuja de Video */}
       {showVideoBubble && (
         <div className="fixed bottom-4 left-4 z-50">
-          <div
-            className="relative size-24  cursor-pointer overflow-hidden rounded-full shadow-lg"
-            onClick={handleVideoBubbleClick}
-          >
-            <video
-              ref={videoRef}
-              src="/video/video.mp4"
-              className="size-full object-cover"
-              autoPlay
-              preload="auto"
-              controls
-            />
-          </div>
+          {isVideoVisible ? (
+            <div className="relative">
+              <div
+                className="relative size-16 cursor-pointer overflow-hidden rounded-full border-2 border-white shadow-lg"
+                onClick={handleVideoBubbleClick}
+              >
+                <video
+                  ref={videoRef}
+                  src="/video/video.mp4"
+                  className="size-full object-cover"
+                  autoPlay
+                  loop
+                  preload="auto"
+                  controls={false}
+                />
+              </div>
+              {/* Botón para ocultar el video */}
+              <button
+                className="absolute right-0 top-0 rounded-full bg-black bg-opacity-50 p-1 text-white"
+                onClick={toggleVideoVisibility}
+                aria-label="Ocultar video"
+              >
+                ✕
+              </button>
+            </div>
+          ) : (
+            // Indicador para mostrar el video nuevamente
+            <button
+              className="rounded-full bg-black bg-opacity-50 p-2 text-white"
+              onClick={toggleVideoVisibility}
+              aria-label="Mostrar video"
+            >
+              ▶
+            </button>
+          )}
         </div>
       )}
     </div>
