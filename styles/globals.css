@@ -115,15 +115,11 @@
 .size-full {
   width: 100%;
   height: 500px; /* Altura normal del diagrama */
-  transition: height 0.3s ease;
+  transition: height 0.3s ease, background-color 0.3s ease;
 }
 
 .size-full.fullscreen {
   height: 100vh; /* Altura completa en modo fullscreen */
-}
-
-@media (max-width: 768px) {
-  .size-full {
-    height: 300px; /* Altura menor en dispositivos móviles */
-  }
+  background-color: white !important; /* Asegúrate de que el fondo se mantenga claro */
+  color: black !important; /* Asegúrate de que el texto se mantenga oscuro */
 }

@@ -147,19 +147,33 @@ const MyDiagram: React.FC = () => {
   const [isFullscreen, setIsFullscreen] = useState(false)
 
   const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      if (diagramRef.current) {
-        diagramRef.current.requestFullscreen()
-        diagramRef.current.classList.add("fullscreen")
-        setIsFullscreen(true)
-      }
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen()
-        if (diagramRef.current) {
-          diagramRef.current.classList.remove("fullscreen")
-          setIsFullscreen(false)
+    const element = diagramRef.current
+
+    if (element) {
+      if (!document.fullscreenElement) {
+        if (element.requestFullscreen) {
+          element.requestFullscreen()
+        } else if ((element as any).webkitRequestFullscreen) {
+          /* Safari */
+          ;(element as any).webkitRequestFullscreen()
+        } else if ((element as any).msRequestFullscreen) {
+          /* IE11 */
+          ;(element as any).msRequestFullscreen()
         }
+        element.classList.add("fullscreen")
+        setIsFullscreen(true)
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen()
+        } else if ((document as any).webkitExitFullscreen) {
+          /* Safari */
+          ;(document as any).webkitExitFullscreen()
+        } else if ((document as any).msExitFullscreen) {
+          /* IE11 */
+          ;(document as any).msExitFullscreen()
+        }
+        element.classList.remove("fullscreen")
+        setIsFullscreen(false)
       }
     }
   }
@@ -193,8 +207,6 @@ const MyDiagram: React.FC = () => {
         nodeTypes={nodeTypes}
         fitView
       >
-        <MiniMap />
-        <Controls />
         <Background color="#aaa" gap={16} />
       </ReactFlow>
     </div>
