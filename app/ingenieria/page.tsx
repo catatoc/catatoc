@@ -35,7 +35,7 @@ export default function EngineeringPage() {
     "Gestión del Tiempo",
   ]
 
-  const images = Array.from({ length: 11 }).map(
+  const images = Array.from({ length: 12 }).map(
     (_, index) => `/images/engineering/engineering${index + 1}.png`
   )
 
