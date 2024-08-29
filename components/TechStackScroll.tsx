@@ -134,7 +134,9 @@ const TechStackScroll = () => {
     <div className="relative mt-6">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h2 className="text-2xl font-semibold tracking-tight">Tech Stack</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">
+            Herramientas
+          </h2>
           <p className="text-sm text-muted-foreground">
             Aquí puedes encontrar las tecnologías que utilizo.
           </p>
