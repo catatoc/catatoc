@@ -111,7 +111,7 @@ export default function MusicPage() {
                       <p className="text-sm text-muted-foreground">
                         Exploración de las tecnologías más recientes.
                       </p>
-                      <TimelineExample />
+                      {/* <TimelineExample /> */}
                     </div>
                     <Separator className="my-4" />
                     <div className="relative">

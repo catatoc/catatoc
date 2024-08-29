@@ -35,25 +35,21 @@ export function AlbumArtwork({
   className,
   ...props
 }: AlbumArtworkProps) {
-  const [isLoading, setIsLoading] = useState(true)
   return (
     <div className={cn("space-y-3", className)} {...props}>
       <ContextMenu>
         <ContextMenuTrigger>
           <div className="overflow-hidden rounded-md">
-            {isLoading && <Skeleton className="absolute inset-0 z-10" />}
-
             <Image
               src={album.cover}
               alt={album.name}
               width={width}
               height={height}
+              quality={50}
               className={cn(
                 "size-auto object-cover transition-all hover:scale-105",
-                aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square",
-                isLoading ? "opacity-0" : "opacity-100"
+                aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
               )}
-              onLoadingComplete={() => setIsLoading(false)}
             />
           </div>
         </ContextMenuTrigger>
