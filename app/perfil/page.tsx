@@ -189,46 +189,6 @@ export default function ProfilePage() {
           </div>
         </div>
       )}
-
-      {/* Burbuja de Video */}
-      {showVideoBubble && (
-        <div className="fixed bottom-4 left-4 z-50">
-          {isVideoVisible ? (
-            <div className="relative">
-              <div
-                className="relative size-16 cursor-pointer overflow-hidden rounded-full shadow-lg"
-                onClick={handleVideoBubbleClick}
-              >
-                <video
-                  ref={videoRef}
-                  src="/video/video.mp4"
-                  className="size-full object-cover"
-                  autoPlay
-                  preload="auto"
-                  controls={false}
-                />
-              </div>
-              {/* Botón para ocultar el video */}
-              <button
-                className="absolute right-0 top-0 rounded-full bg-black bg-opacity-50 p-1 text-white"
-                onClick={toggleVideoVisibility}
-                aria-label="Ocultar video"
-              >
-                <XIcon size={16} />
-              </button>
-            </div>
-          ) : (
-            // Indicador para mostrar el video nuevamente
-            <button
-              className="rounded-full bg-black bg-opacity-50 p-2 text-white"
-              onClick={toggleVideoVisibility}
-              aria-label="Mostrar video"
-            >
-              ▶
-            </button>
-          )}
-        </div>
-      )}
     </div>
   )
 }

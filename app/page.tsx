@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlbumArtwork } from "@/components/album-artwork"
 import MyDiagram from "@/components/diagram/MyDiagram"
+import DiagramIcon from "@/components/icons/Diagram"
 import { Sidebar } from "@/components/sidebar"
 import SequenceTimeline from "@/components/timeline/SequenceTimeline"
 import EmojiConfetti from "@/components/triggerConfetti"
@@ -45,17 +46,17 @@ export default function MusicPage() {
         <div className="">
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">
-              <Sidebar playlists={playlists} className="hidden lg:block" />
+              <Sidebar className="hidden lg:block" />
               <div className="col-span-3 lg:col-span-4 lg:border-l">
                 <div className="h-full px-4 py-6 lg:px-8">
                   <Tabs defaultValue="gallery" className="h-full space-y-6">
                     <div className="space-between flex items-center justify-between">
                       <TabsList>
                         <TabsTrigger value="gallery" className="relative">
-                          <Grid className="mr-2" />
+                          <Grid className="" />
                         </TabsTrigger>
                         <TabsTrigger value="diagram" className="relative">
-                          <List className="mr-2" />
+                          <DiagramIcon className=" size-5" />
                         </TabsTrigger>
                       </TabsList>
                     </div>
@@ -68,7 +69,7 @@ export default function MusicPage() {
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
                           <h2 className="text-2xl font-semibold tracking-tight">
-                            Sobre mí
+                            ¡Hola bienvenido!
                           </h2>
                           <p className="text-sm text-muted-foreground">
                             Conoce más sobre Carlos Horacio Carrasquero.
