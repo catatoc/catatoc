@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import { XIcon } from "lucide-react"
 
 import { Carousel } from "@/components/ui/carousel"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
@@ -195,7 +196,7 @@ export default function ProfilePage() {
           {isVideoVisible ? (
             <div className="relative">
               <div
-                className="relative size-16 cursor-pointer overflow-hidden rounded-full border-2 border-white shadow-lg"
+                className="relative size-16 cursor-pointer overflow-hidden rounded-full shadow-lg"
                 onClick={handleVideoBubbleClick}
               >
                 <video
@@ -203,7 +204,6 @@ export default function ProfilePage() {
                   src="/video/video.mp4"
                   className="size-full object-cover"
                   autoPlay
-                  loop
                   preload="auto"
                   controls={false}
                 />
@@ -214,7 +214,7 @@ export default function ProfilePage() {
                 onClick={toggleVideoVisibility}
                 aria-label="Ocultar video"
               >
-                ✕
+                <XIcon size={16} />
               </button>
             </div>
           ) : (
