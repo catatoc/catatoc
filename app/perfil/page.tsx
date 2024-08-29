@@ -83,6 +83,9 @@ export default function ProfilePage() {
           height={150}
           alt="[Tu Nombre]"
           className="mx-auto rounded-full"
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lPAAAAA=="
         />
         <h1 className="mt-4 text-2xl font-semibold">
           Carlos Horacio Carrasquero
@@ -182,6 +185,9 @@ export default function ProfilePage() {
               height={800}
               className="rounded-md"
               objectFit="contain"
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lPAAAAA=="
             />
             <p className="mt-4 text-center text-white">
               {selectedAchievement.artist}

@@ -130,6 +130,9 @@ export default function MusicPage() {
                           height={500}
                           className="rounded-md shadow-md"
                           objectFit="cover"
+                          loading="lazy"
+                          placeholder="blur"
+                          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lPAAAAA=="
                         />
                       </CardContent>
                     </Card>
@@ -157,6 +160,9 @@ export default function MusicPage() {
               height={800}
               className="rounded-md"
               objectFit="contain"
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lPAAAAA=="
             />
           </div>
         </div>
