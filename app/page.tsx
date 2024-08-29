@@ -9,6 +9,7 @@ import { Grid, List } from "lucide-react"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { AlertsCarousel } from "@/components/CarouselAlert"
 import TechStackScroll from "@/components/TechStackScroll"
 import { AlbumArtwork } from "@/components/album-artwork"
 import MyDiagram from "@/components/diagram/MyDiagram"
@@ -18,8 +19,8 @@ import SequenceTimeline from "@/components/timeline/SequenceTimeline"
 import EmojiConfetti from "@/components/triggerConfetti"
 
 export const metadata: Metadata = {
-  title: "Currículum de Carlos Horacio Carrasquero",
-  description: "Secciones para conocer a Carlos Horacio Carrasquero.",
+  title: "Carlos Horacio Carrasquero",
+  description: "Sobre mi.",
 }
 
 export default function MusicPage() {
@@ -46,6 +47,7 @@ export default function MusicPage() {
       <div className="md:block">
         <div className="">
           <div className="bg-background">
+            <AlertsCarousel />
             <div className="grid lg:grid-cols-5">
               <Sidebar className="hidden lg:block" />
               <div className="col-span-3 lg:col-span-4 lg:border-l">
