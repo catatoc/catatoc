@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/carousel"
 import Leaderboard from "@/components/ui/leaderboard"
 import { Blockquote, BlockquoteAuthor } from "@/components/ui/quote"
+import { Footer } from "@/components/Footer"
 import ParticlesBackground from "@/components/ParticlesBackground"
 import TechStack from "@/components/TechStack"
 

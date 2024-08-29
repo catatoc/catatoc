@@ -67,7 +67,7 @@ export default function SportsPage() {
     <div className="relative min-h-screen p-8">
       <FootballEntrance />
 
-      <div className="mt-12 size-full">
+      <div className="mt-12 flex flex-col">
         <h1 className="mb-4 text-4xl font-bold">Mi Trayectoria Deportiva</h1>
         <p className="mb-6">
           Desde temprana edad, el deporte ha sido una parte fundamental de mi
