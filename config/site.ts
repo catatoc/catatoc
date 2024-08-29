@@ -5,6 +5,10 @@ export const siteConfig = {
   description: "Aplicación para cargo en empresas Polar.",
   mainNav: [
     {
+      title: "🏡",
+      href: "/",
+    },
+    {
       title: "Música",
       href: "/musica",
     },

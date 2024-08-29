@@ -19,7 +19,7 @@ export function MainNav({ items }: MainNavProps) {
   const [showNotificationDot, setShowNotificationDot] = React.useState(false)
 
   // Determinar la ruta de destino
-  const targetHref = pathname === "/" ? "/perfil" : "/"
+  const targetHref = pathname === "/" ? "/perfil" : "/perfil"
 
   // Mostrar el punto verde después de 10 segundos
   React.useEffect(() => {
@@ -46,7 +46,7 @@ export function MainNav({ items }: MainNavProps) {
       </Link>
       {items?.length ? (
         <nav className="flex gap-6">
-          {items?.map(
+          {items.map(
             (item, index) =>
               item.href && (
                 <Link
@@ -57,7 +57,10 @@ export function MainNav({ items }: MainNavProps) {
                     item.disabled && "cursor-not-allowed opacity-80",
                     pathname === item.href
                       ? "text-green-500"
-                      : "text-muted-foreground"
+                      : "text-muted-foreground",
+                    pathname === item.href &&
+                      item.title === "🏡" &&
+                      "border-green-500"
                   )}
                 >
                   {item.title}
