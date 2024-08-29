@@ -76,7 +76,7 @@ export default function EngineeringPage() {
     <div className="relative min-h-screen p-0 lg:p-8">
       <ParticlesBackground />
 
-      <div className="relative z-10 bg-white bg-opacity-70 p-8 rounded-lg shadow-lg">
+      <div className="relative z-10 bg-white dark:bg-gray-900 dark:bg-opacity-70 bg-opacity-70 p-8 rounded-lg shadow-lg">
         <div className="mt-12">
           <h1 className="mb-4 text-4xl font-bold">
             Mi Trayectoria en Ingeniería
