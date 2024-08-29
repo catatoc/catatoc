@@ -4,9 +4,14 @@ import { Metadata } from "next"
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import Cactus from "@/components/Cactus"
+import { ClientWrapper } from "@/components/ClientWrapper"
+import Chatbot from "@/components/faqs"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+
+// Importa el componente Cactus
 
 export const metadata: Metadata = {
   title: {
@@ -30,6 +35,17 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
+  const assetsToLoad = [
+    { type: "image", src: "/images/sports/soccer.png" },
+    { type: "image", src: "/images/academic/tesis.png" },
+    { type: "image", src: "/images/music/esquina.png" },
+    { type: "image", src: "/images/family/royale.png" },
+    { type: "image", src: "/images/engineering/tech.png" },
+    { type: "image", src: "/images/music/koga.png" },
+    { type: "image", src: "/images/people/cono.png" },
+    { type: "audio", src: "/music/music.mp3" },
+  ]
+
   return (
     <>
       <html lang="en" suppressHydrationWarning>
@@ -41,11 +57,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
-              <div className="flex-1">{children}</div>
-            </div>
-            <TailwindIndicator />
+            <ClientWrapper assets={assetsToLoad}>
+              <div className="relative flex min-h-screen flex-col overflow-x-hidden">
+                <SiteHeader />
+                <main className="flex-1 p-4 sm:p-6 md:p-8 lg:p-12">
+                  {children}
+                </main>
+                <TailwindIndicator />
+                <Chatbot />
+              </div>
+              <Cactus /> {/* Incluye el componente Cactus aquí */}
+            </ClientWrapper>
           </ThemeProvider>
         </body>
       </html>

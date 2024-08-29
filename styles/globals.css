@@ -79,3 +79,26 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Aplica las animaciones en clase .animate-cactus */
+.animate-slide-in {
+  animation: slide-in 1s ease-out, pulse 1.5s infinite;
+}
