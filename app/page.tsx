@@ -9,6 +9,7 @@ import { Grid, List } from "lucide-react"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import TechStackScroll from "@/components/TechStackScroll"
 import { AlbumArtwork } from "@/components/album-artwork"
 import MyDiagram from "@/components/diagram/MyDiagram"
 import DiagramIcon from "@/components/icons/Diagram"
@@ -69,7 +70,7 @@ export default function MusicPage() {
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
                           <h2 className="text-2xl font-semibold tracking-tight">
-                            ¡Hola bienvenido!
+                            Información general
                           </h2>
                           <p className="text-sm text-muted-foreground">
                             Conoce más sobre Carlos Horacio Carrasquero.
@@ -95,6 +96,7 @@ export default function MusicPage() {
                           <ScrollBar orientation="horizontal" />
                         </ScrollArea>
                       </div>
+                      <TechStackScroll />
                     </TabsContent>
 
                     {/* Vista Diagrama */}
