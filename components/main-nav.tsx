@@ -40,7 +40,6 @@ export function MainNav({ items }: MainNavProps) {
             <span className="absolute bottom-1 right-1 z-50 block size-2 animate-ping rounded-full bg-green-500"></span>
           )}
         </Avatar>
-        {/* Punto verde de notificación */}
         <span className="hidden font-bold md:inline-block">
           {siteConfig.name}
         </span>
@@ -54,8 +53,11 @@ export function MainNav({ items }: MainNavProps) {
                   key={index}
                   href={item.href}
                   className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground",
-                    item.disabled && "cursor-not-allowed opacity-80"
+                    "flex items-center text-sm font-medium",
+                    item.disabled && "cursor-not-allowed opacity-80",
+                    pathname === item.href
+                      ? "text-green-500"
+                      : "text-muted-foreground"
                   )}
                 >
                   {item.title}

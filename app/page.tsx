@@ -2,20 +2,18 @@ import { Metadata } from "next"
 import Image from "next/image"
 import { listenNowAlbums, madeForYouAlbums } from "@/data/albums"
 import { playlists } from "@/data/playlists"
-import { PlusCircledIcon } from "@radix-ui/react-icons"
+import { Grid, List } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+// Asegúrate de importar los iconos adecuados
+
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlbumArtwork } from "@/components/album-artwork"
-import { Menu } from "@/components/menu"
-import { PodcastEmptyPlaceholder } from "@/components/podcast-empty-placeholder"
+import MyDiagram from "@/components/diagram/MyDiagram"
 import { Sidebar } from "@/components/sidebar"
-import TimelineExample from "@/components/timeline/TimelineExample"
+import SequenceTimeline from "@/components/timeline/SequenceTimeline"
 import EmojiConfetti from "@/components/triggerConfetti"
-
-// Importa el nuevo componente
 
 export const metadata: Metadata = {
   title: "Currículum de Carlos Horacio Carrasquero",
@@ -23,7 +21,7 @@ export const metadata: Metadata = {
 }
 
 export default function MusicPage() {
-  const emoji = "⚽" // Usar la pelota de fútbol como emoji
+  const emoji = "⚽"
 
   return (
     <>
@@ -44,29 +42,27 @@ export default function MusicPage() {
         />
       </div>
       <div className="md:block">
-        {/* <Menu /> */}
         <div className="">
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">
               <Sidebar playlists={playlists} className="hidden lg:block" />
               <div className="col-span-3 lg:col-span-4 lg:border-l">
                 <div className="h-full px-4 py-6 lg:px-8">
-                  <Tabs defaultValue="music" className="h-full space-y-6">
+                  <Tabs defaultValue="gallery" className="h-full space-y-6">
                     <div className="space-between flex items-center justify-between">
-                      <TabsList className="md:hidden">
-                        <TabsTrigger value="music" className="relative">
-                          Innovación
+                      <TabsList>
+                        <TabsTrigger value="gallery" className="relative">
+                          <Grid className="mr-2" />
                         </TabsTrigger>
-                        <TabsTrigger value="podcasts">Tecnología</TabsTrigger>
-                        <TabsTrigger value="live" disabled>
-                          Ingeniería
+                        <TabsTrigger value="diagram" className="relative">
+                          <List className="mr-2" />
                         </TabsTrigger>
                       </TabsList>
                     </div>
 
-                    {/* Sección Innovación */}
+                    {/* Vista Galería */}
                     <TabsContent
-                      value="music"
+                      value="gallery"
                       className="border-none p-0 outline-none"
                     >
                       <div className="flex items-center justify-between">
@@ -84,10 +80,7 @@ export default function MusicPage() {
                         <ScrollArea className="w-96 whitespace-nowrap md:w-full">
                           <div className="flex space-x-4 pb-4">
                             {listenNowAlbums.map((album) => (
-                              <EmojiConfetti
-                                key={album.name}
-                                emoji={emoji} // Aquí puedes usar "⚽" o cualquier emoji que desees
-                              >
+                              <EmojiConfetti key={album.name} emoji={emoji}>
                                 <AlbumArtwork
                                   album={album}
                                   className="w-[250px] shrink-0"
@@ -103,53 +96,23 @@ export default function MusicPage() {
                       </div>
                     </TabsContent>
 
-                    {/* Sección Tecnología */}
-                    <div className="mt-6 space-y-1">
-                      <h2 className="text-2xl font-semibold tracking-tight">
-                        Tecnología
-                      </h2>
-                      <p className="text-sm text-muted-foreground">
-                        Exploración de las tecnologías más recientes.
-                      </p>
-                      {/* <TimelineExample /> */}
-                    </div>
-                    <Separator className="my-4" />
-                    <div className="relative">
-                      <ScrollArea className="w-96 whitespace-nowrap rounded-md border md:w-full">
-                        <div className="flex space-x-4 pb-4">
-                          {madeForYouAlbums.map((album) => (
-                            <AlbumArtwork
-                              key={album.name}
-                              album={album}
-                              className="w-[150px] shrink-0"
-                              aspectRatio="square"
-                              width={150}
-                              height={150}
-                            />
-                          ))}
-                        </div>
-                        <ScrollBar orientation="horizontal" />
-                      </ScrollArea>
-                    </div>
-
-                    {/* Sección Ingeniería */}
+                    {/* Vista Diagrama */}
                     <TabsContent
-                      value="podcasts"
+                      value="diagram"
                       className="h-full flex-col border-none p-0 data-[state=active]:flex"
                     >
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
                           <h2 className="text-2xl font-semibold tracking-tight">
-                            Ingeniería
+                            Tecnología
                           </h2>
                           <p className="text-sm text-muted-foreground">
-                            Proyectos y desarrollos en el campo de la
-                            ingeniería.
+                            Exploración de las tecnologías más recientes.
                           </p>
                         </div>
                       </div>
                       <Separator className="my-4" />
-                      <PodcastEmptyPlaceholder />
+                      <MyDiagram />
                     </TabsContent>
                   </Tabs>
                 </div>
