@@ -4,7 +4,19 @@ import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { XIcon } from "lucide-react"
 
-import { Carousel } from "@/components/ui/carousel"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { AlbumArtwork } from "@/components/album-artwork"
@@ -12,24 +24,29 @@ import { AlbumArtwork } from "@/components/album-artwork"
 // Datos de logros
 const achievements = [
   {
-    name: "Logro 1",
+    name: "Bachiller en Ciencias",
     cover: "/images/achievements/achievement1.png",
-    artist: "Descripción 1.",
+    artist: "Colegio Don Bosco",
   },
   {
-    name: "Logro 2",
+    name: "Ingeniero en Producción",
     cover: "/images/achievements/achievement2.png",
-    artist: "Descripción 2.",
+    artist: "UNIMET.",
   },
   {
-    name: "Logro 3",
+    name: "Ingeniero en Sistemas",
     cover: "/images/achievements/achievement3.png",
-    artist: "Descripción 3.",
+    artist: "UNIMET.",
   },
   {
-    name: "Logro 4",
+    name: "Música",
     cover: "/images/achievements/achievement4.png",
-    artist: "Descripción 4.",
+    artist: "UNIMET",
+  },
+  {
+    name: "Junta Directiva",
+    cover: "/images/achievements/achievement5.png",
+    artist: "FCE UNIMET",
   },
 ]
 
@@ -41,37 +58,23 @@ const familyPhotos = [
 
 export default function ProfilePage() {
   const [selectedAchievement, setSelectedAchievement] = useState<any>(null)
-  const [showVideoBubble, setShowVideoBubble] = useState(true)
   const [isVideoVisible, setIsVideoVisible] = useState(true)
-  const videoRef = useRef<HTMLVideoElement>(null)
 
-  // Mostrar la burbuja del video después de 5 segundos
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.muted = false
-        videoRef.current.play().catch((error) => {
-          console.error("Error al reproducir el video automáticamente:", error)
-        })
-      }
-    }, 5000)
-    return () => clearTimeout(timer)
-  }, [])
+  const familyPhotos = Array.from({ length: 12 }).map(
+    (_, index) => `/images/family/family${index + 1}.png`
+  )
 
-  // Manejar el clic en la burbuja de video para activar el sonido si está silenciado
-  const handleVideoBubbleClick = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = false
-      videoRef.current.play().catch((error) => {
-        console.error("Error al intentar reproducir el video:", error)
-      })
-    }
-  }
+  const culturaPhotos = Array.from({ length: 8 }).map(
+    (_, index) => `/images/canada/canada${index + 1}.png`
+  )
 
-  // Ocultar y mostrar el video
-  const toggleVideoVisibility = () => {
-    setIsVideoVisible((prev) => !prev)
-  }
+  const leadershipPhotos = Array.from({ length: 8 }).map(
+    (_, index) => `/images/leadership/leadership${index + 1}.png`
+  )
+
+  const peoplePhotos = Array.from({ length: 10 }).map(
+    (_, index) => `/images/people/people${index + 1}.png`
+  )
 
   return (
     <div className="px-4 py-6 lg:px-8">
@@ -97,7 +100,7 @@ export default function ProfilePage() {
         <h2 className="text-2xl font-semibold tracking-tight">Mis Logros</h2>
         <Separator className="my-4" />
         <div className="relative">
-          <ScrollArea className="flex w-96 gap-4 whitespace-nowrap rounded-md border md:w-full">
+          <ScrollArea className="flex w-96 gap-4 whitespace-nowrap rounded-md border p-4 md:w-full">
             <div className="flex space-x-8">
               {achievements.map((achievement) => (
                 <div
@@ -121,55 +124,277 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      {/* Sección: Familia (con Carousel) */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold tracking-tight">Familia</h2>
-        <Separator className="my-4" />
-        <Carousel className="hidden w-full">
-          {familyPhotos.map((photo, index) => (
-            <Image
-              key={index}
-              src={photo}
-              width={150}
-              height={150}
-              alt={`Foto de Familia ${index + 1}`}
-              className="rounded-md"
-            />
-          ))}
-        </Carousel>
-      </div>
+      {/* Secciones con Acordeones */}
+      <Accordion type="single" collapsible>
+        {/* Sección: Familia */}
+        <AccordionItem value="family">
+          <AccordionTrigger className="text-2xl font-semibold tracking-tight">
+            Familia
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              <div>
+                <p className="text-lg">
+                  Mi familia es <strong>mi mayor fortaleza</strong>. Somos una
+                  familia <strong>numerosa y unida</strong>, con{" "}
+                  <strong>raíces profundamente venezolanas</strong> que han
+                  moldeado mis valores y mi forma de ver la vida. Desde pequeño,
+                  aprendí la importancia de la{" "}
+                  <strong>solidaridad, el respeto y el amor</strong> hacia los
+                  demás. Estos valores, inculcados por mi familia, han sido
+                  fundamentales en mi crecimiento personal y profesional.
+                </p>
+                <p className="mt-4 text-lg">
+                  Cada reunión familiar es un recordatorio de nuestras
+                  tradiciones y del vínculo inquebrantable que nos une. La{" "}
+                  <strong>alegría y el calor humano</strong> son parte esencial
+                  de nuestras vidas, algo que valoro enormemente y que me
+                  esfuerzo por transmitir en cada aspecto de mi vida.
+                </p>
+              </div>
 
-      {/* Sección: Venezuela */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold tracking-tight">Venezuela</h2>
-        <Separator className="my-4" />
-        <p>
-          Habla sobre tu conexión con Venezuela, tus raíces, cultura y lo que
-          significa para ti.
-        </p>
-      </div>
+              <div className="flex justify-center">
+                <Carousel
+                  className="w-full max-w-lg"
+                  opts={{ loop: true, align: "start", slidesToScroll: 1 }}
+                >
+                  <CarouselContent className="-ml-4 flex">
+                    {familyPhotos.map((src, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="shrink-0 basis-full pl-4 sm:basis-1/3"
+                      >
+                        <div className="p-1">
+                          <Image
+                            src={src}
+                            alt={`Foto de Familia ${index + 1}`}
+                            width={500}
+                            height={500}
+                            className="rounded-md shadow-md"
+                            objectFit="cover"
+                            loading="lazy"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
 
-      {/* Sección: Educación */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold tracking-tight">Educación</h2>
-        <Separator className="my-4" />
-        <p>
-          Aquí puedes detallar tu trayectoria educativa, los títulos obtenidos,
-          instituciones y cualquier otra información relevante.
-        </p>
-      </div>
+        {/* Sección: Cultura */}
+        <AccordionItem value="cultura">
+          <AccordionTrigger className="text-2xl font-semibold tracking-tight">
+            Cultura
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              <div>
+                <h3 className="text-xl font-semibold">🇻🇪 Venezuela</h3>
+                <p className="mt-2 text-lg">
+                  Venezuela es mi país natal, un lugar que amo profundamente. La
+                  riqueza de su cultura, la calidez de su gente y la belleza de
+                  sus paisajes naturales han sido fundamentales en mi vida.
+                  Crecer en Venezuela me ha permitido valorar la{" "}
+                  <strong>diversidad cultural</strong>, la{" "}
+                  <strong>alegría de su gente</strong> y el{" "}
+                  <strong>orgullo de nuestras tradiciones</strong>.
+                </p>
+                <p className="mt-4 text-lg">
+                  Aunque actualmente vivo en otro país, siempre llevo a
+                  Venezuela en mi corazón. Su cultura vibrante y su historia
+                  única son una fuente constante de inspiración y fortaleza en
+                  mi vida diaria.
+                </p>
 
-      {/* Sección: Amor por lo que hago */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold tracking-tight">
-          Amor por lo que hago
-        </h2>
-        <Separator className="my-4" />
-        <p>
-          En esta sección, puedes compartir lo que te apasiona de tu trabajo y
-          cómo eso impacta en tu vida y en los demás.
-        </p>
-      </div>
+                <h3 className="mt-8 text-xl font-semibold">🇨🇦 Canadá</h3>
+                <p className="mt-2 text-lg">
+                  Viví en Canadá durante un año, una experiencia que me permitió
+                  no solo aprender inglés, sino también sumergirme en una
+                  cultura rica y diversa. Canadá es un país que valora la{" "}
+                  <strong>inclusión</strong>, la <strong>diversidad</strong> y
+                  la <strong>convivencia pacífica</strong> entre personas de
+                  diferentes orígenes.
+                </p>
+                <p className="mt-4 text-lg">
+                  La experiencia canadiense me enseñó a apreciar diferentes
+                  perspectivas culturales y me ayudó a crecer tanto personal
+                  como profesionalmente. Fue un año de descubrimientos y
+                  aprendizajes que me dejó recuerdos imborrables.
+                </p>
+              </div>
+
+              <div className="flex justify-center">
+                <Carousel
+                  className="w-full max-w-lg"
+                  opts={{ loop: true, align: "start", slidesToScroll: 1 }}
+                >
+                  <CarouselContent className="-ml-4 flex">
+                    {culturaPhotos.map((src, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="shrink-0 basis-full pl-4 sm:basis-1/3"
+                      >
+                        <div className="p-1">
+                          <Image
+                            src={src}
+                            alt={`Foto de Cultura ${index + 1}`}
+                            width={500}
+                            height={500}
+                            className="rounded-md shadow-md"
+                            objectFit="cover"
+                            loading="lazy"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+
+        {/* Sección: Liderazgo */}
+        <AccordionItem value="liderazgo">
+          <AccordionTrigger className="text-2xl font-semibold tracking-tight">
+            Liderazgo
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              <div>
+                <h3 className="text-xl font-semibold">
+                  Mi Estilo de Liderazgo
+                </h3>
+                <p className="mt-2 text-lg">
+                  Mi experiencia en liderazgo se basa en{" "}
+                  <strong>tomar decisiones estratégicas</strong>,{" "}
+                  <strong>guiar equipos hacia la innovación</strong>, y{" "}
+                  <strong>
+                    facilitar el crecimiento personal y profesional
+                  </strong>{" "}
+                  de aquellos a mi alrededor. He liderado equipos en distintos
+                  contextos, desde el ámbito empresarial hasta el educativo.
+                </p>
+                <p className="mt-4 text-lg">
+                  Como <strong>profesor universitario</strong>,{" "}
+                  <strong>guía de campamento</strong>,{" "}
+                  <strong>deportista</strong>, y <strong>músico</strong>, he
+                  aprendido a <strong>inspirar y motivar</strong> a los demás,
+                  adaptándome a diferentes audiencias y situaciones. En cada uno
+                  de estos roles, la <strong>disciplina</strong>, la{" "}
+                  <strong>resiliencia</strong>, y la{" "}
+                  <strong>colaboración</strong> son esenciales. Creo en el
+                  liderazgo que empodera, que permite a cada individuo
+                  desarrollar su potencial máximo.
+                </p>
+              </div>
+
+              <div className="flex justify-center">
+                <Carousel
+                  className="w-full max-w-lg"
+                  opts={{ loop: true, align: "start", slidesToScroll: 1 }}
+                >
+                  <CarouselContent className="-ml-4 flex">
+                    {leadershipPhotos.map((src, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="shrink-0 basis-full pl-4 sm:basis-1/3"
+                      >
+                        <div className="p-1">
+                          <Image
+                            src={src}
+                            alt={`Foto de Liderazgo ${index + 1}`}
+                            width={500}
+                            height={500}
+                            className="rounded-md shadow-md"
+                            objectFit="cover"
+                            loading="lazy"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+
+        {/* Sección: Impacto */}
+        <AccordionItem value="impacto">
+          <AccordionTrigger className="text-2xl font-semibold tracking-tight">
+            Impacto
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+              <div>
+                <h3 className="text-xl font-semibold">
+                  Compañerismo, Amor por lo que Hago y Ayudar a los Demás
+                </h3>
+                <p className="mt-2 text-lg">
+                  El <strong>compañerismo</strong> ha sido fundamental en cada
+                  equipo y proyecto en el que he participado. Valoro
+                  profundamente las relaciones interpersonales y creo que los
+                  mejores resultados se logran cuando trabajamos juntos con un
+                  propósito común.
+                </p>
+                <p className="mt-4 text-lg">
+                  Mi <strong>amor por lo que hago</strong> es el motor que
+                  impulsa mi vida profesional y personal. Cada proyecto es una
+                  oportunidad para crear, innovar y superar desafíos, lo que me
+                  llena de energía y satisfacción.
+                </p>
+                <p className="mt-4 text-lg">
+                  Además, siempre he tenido una fuerte inclinación por{" "}
+                  <strong>ayudar a los demás</strong>. Ya sea guiando a un
+                  compañero, ofreciendo apoyo en momentos difíciles o
+                  compartiendo conocimientos, encuentro un profundo sentido de
+                  propósito en hacer la diferencia en la vida de otros.
+                </p>
+              </div>
+
+              <div className="flex justify-center">
+                <Carousel
+                  className="w-full max-w-lg"
+                  opts={{ loop: true, align: "start", slidesToScroll: 1 }}
+                >
+                  <CarouselContent className="-ml-4 flex">
+                    {peoplePhotos.map((src, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="shrink-0 basis-full pl-4 sm:basis-1/3"
+                      >
+                        <div className="p-1">
+                          <Image
+                            src={src}
+                            alt={`Foto de Compañerismo ${index + 1}`}
+                            width={500}
+                            height={500}
+                            className="rounded-md shadow-md"
+                            objectFit="cover"
+                            loading="lazy"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious />
+                  <CarouselNext />
+                </Carousel>
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
 
       {/* Modal para Logro Seleccionado */}
       {selectedAchievement && (

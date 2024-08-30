@@ -5,129 +5,97 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollArea, ScrollBar } from "./ui/scroll-area"
 import { Separator } from "./ui/separator"
 
-interface TechItem {
+interface ExperienceItem {
   emoji: string
   name: string
   description: string
   level: string
 }
 
-const techStack: TechItem[] = [
+const experiences: ExperienceItem[] = [
   {
-    emoji: "🟦",
-    name: "SAP",
-    description: "ERP empresarial líder.",
+    emoji: "🚀",
+    name: "Innovación de Productos",
+    description:
+      "Desarrollo y lanzamiento de productos innovadores que mejoran la calidad de vida y satisfacen nuevas demandas del mercado.",
     level: "Avanzado",
   },
   {
-    emoji: "🔧",
-    name: "VS Code",
-    description: "Editor de código poderoso.",
+    emoji: "🌱",
+    name: "Sostenibilidad y Responsabilidad Ambiental",
+    description:
+      "Implementación de prácticas sostenibles en productos y servicios, garantizando un impacto positivo en el medio ambiente.",
     level: "Avanzado",
   },
   {
-    emoji: "💻",
-    name: "Python",
-    description: "Lenguaje de programación versátil.",
+    emoji: "⚡",
+    name: "Desarrollo Ágil de Proyectos",
+    description:
+      "Aplicación de metodologías ágiles para mejorar la eficiencia en el desarrollo de proyectos y servicios.",
     level: "Avanzado",
   },
   {
-    emoji: "🌐",
-    name: "JavaScript",
-    description: "Lenguaje para la web.",
+    emoji: "🔍",
+    name: "Evaluación de Oportunidades de Mercado",
+    description:
+      "Identificación y análisis de nuevas áreas de mercado para la expansión de productos y servicios.",
     level: "Avanzado",
   },
   {
-    emoji: "🔮",
-    name: "ChatGPT",
-    description: "Inteligencia Artificial conversacional.",
-    level: "Avanzado",
-  },
-  {
-    emoji: "📎",
-    name: "Office 365",
-    description: "Suite de productividad empresarial.",
-    level: "Avanzado",
-  },
-  {
-    emoji: "🗂",
-    name: "Notion",
-    description: "Gestión de notas y tareas.",
+    emoji: "💡",
+    name: "Gestión de Innovación",
+    description:
+      "Liderazgo en la creación de un entorno que fomente la innovación continua dentro de la organización.",
     level: "Intermedio",
   },
   {
-    emoji: "🖥️",
-    name: "Power BI",
-    description: "Análisis de datos empresarial.",
+    emoji: "🔄",
+    name: "Cultura de Mejora Continua",
+    description:
+      "Promoción y establecimiento de una cultura organizacional que desafíe constantemente el status quo.",
     level: "Intermedio",
   },
   {
-    emoji: "📊",
-    name: "Tableau",
-    description: "Visualización de datos.",
+    emoji: "❤️",
+    name: "Desarrollo de Estrategias de Bienestar",
+    description:
+      "Creación e implementación de estrategias que contribuyan al bienestar social y a la calidad de vida.",
     level: "Intermedio",
   },
   {
-    emoji: "👥",
-    name: "Jira",
-    description: "Gestión de proyectos y tareas.",
+    emoji: "🌟",
+    name: "Liderazgo Transformacional",
+    description:
+      "Capacidad para liderar equipos hacia la transformación organizacional, impulsando el cambio y la innovación.",
     level: "Intermedio",
   },
   {
-    emoji: "🎨",
-    name: "Figma",
-    description: "Diseño de interfaces colaborativas.",
-    level: "Intermedio",
-  },
-  {
-    emoji: "🗃️",
-    name: "MongoDB",
-    description: "Base de datos NoSQL.",
-    level: "Intermedio",
-  },
-  {
-    emoji: "📎",
-    name: "Google Workspace",
-    description: "Suite de productividad empresarial.",
-    level: "Intermedio",
-  },
-  {
-    emoji: "💬",
-    name: "Lark",
-    description: "Colaboración y comunicación.",
+    emoji: "🤝",
+    name: "Responsabilidad Social Corporativa (RSC)",
+    description:
+      "Implementación de prácticas de RSC que integren responsabilidad social en la estrategia de negocio.",
     level: "Básico",
   },
   {
-    emoji: "🎥",
-    name: "Canva",
-    description: "Diseño gráfico sencillo.",
-    level: "Básico",
-  },
-  {
-    emoji: "💾",
-    name: "Odoo",
-    description: "Suite de aplicaciones empresariales.",
-    level: "Básico",
-  },
-  {
-    emoji: "📂",
-    name: "Celonis",
-    description: "Minería de procesos.",
+    emoji: "🧪",
+    name: "Investigación y Desarrollo (I+D)",
+    description:
+      "Contribución al desarrollo de nuevos productos a través de la investigación y la experimentación.",
     level: "Básico",
   },
 ]
 
-const TechStackScroll = () => {
+const ExperiencesScroll = () => {
   // Ordenar por nivel: Avanzado > Intermedio > Básico
-  const sortedTechStack = [...techStack].sort((a, b) => {
+  const sortedExperiences = [...experiences].sort((a, b) => {
     const levels = ["Avanzado", "Intermedio", "Básico"]
     return levels.indexOf(a.level) - levels.indexOf(b.level)
   })
 
-  // Calcular el ancho más amplio basado en el nombre de la tecnología más larga
+  // Calcular el ancho más amplio basado en el nombre de la experiencia más larga
   const maxWidth =
-    sortedTechStack.reduce((max, tech) => {
-      return Math.max(max, tech.name.length)
+    sortedExperiences.reduce((max, experience) => {
+      return Math.max(max, experience.name.length)
     }, 0) * 10 // multiplicamos por un factor para ajustar el ancho
 
   return (
@@ -135,10 +103,10 @@ const TechStackScroll = () => {
       <div className="flex items-center justify-between">
         <div className="space-y-1">
           <h2 className="text-2xl font-semibold tracking-tight">
-            Herramientas
+            Experiencias
           </h2>
           <p className="text-sm text-muted-foreground">
-            Aquí puedes encontrar las tecnologías que utilizo.
+            Aquí puedes encontrar las experiencias que he desarrollado.
           </p>
         </div>
       </div>
@@ -146,29 +114,31 @@ const TechStackScroll = () => {
 
       <ScrollArea className="w-96 whitespace-nowrap md:w-full">
         <div className="flex space-x-4 pb-4">
-          {sortedTechStack.map((tech, index) => (
+          {sortedExperiences.map((experience, index) => (
             <Card
               key={index}
-              className="hover:shadow-lg transition-shadow shrink-0"
+              className="shrink-0 transition-shadow hover:shadow-lg"
               style={{ width: `${maxWidth}px` }} // Aplicar el ancho calculado
             >
               <CardHeader>
                 <CardTitle className="text-center text-2xl">
-                  {tech.emoji}
+                  {experience.emoji}
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-center">
-                <h3 className="text-sm font-semibold">{tech.name}</h3>
+                <h3 className="text-sm font-semibold">{experience.name}</h3>
                 <div className="mt-2">
-                  <p className="text-xs text-muted-foreground">{tech.level}</p>
-                  <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                  <p className="text-xs text-muted-foreground">
+                    {experience.level}
+                  </p>
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
                     <div
                       className={`h-full ${
-                        tech.level === "Avanzado"
-                          ? "bg-green-500 w-3/4"
-                          : tech.level === "Intermedio"
-                          ? "bg-blue-400 w-1/2"
-                          : "bg-yellow-500 w-1/4"
+                        experience.level === "Avanzado"
+                          ? "w-3/4 bg-green-500"
+                          : experience.level === "Intermedio"
+                          ? "w-1/2 bg-blue-400"
+                          : "w-1/4 bg-yellow-500"
                       }`}
                     ></div>
                   </div>
@@ -183,4 +153,4 @@ const TechStackScroll = () => {
   )
 }
 
-export default TechStackScroll
+export default ExperiencesScroll

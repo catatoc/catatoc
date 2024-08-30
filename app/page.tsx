@@ -54,7 +54,7 @@ export default function MusicPage() {
                 <div className="h-full px-4 py-6 lg:px-8">
                   <Tabs defaultValue="gallery" className="h-full space-y-6">
                     <div className="space-between flex items-center justify-between">
-                      <TabsList>
+                      <TabsList className="hidden">
                         <TabsTrigger value="gallery" className="relative">
                           <Grid className="" />
                         </TabsTrigger>
