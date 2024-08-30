@@ -5,12 +5,14 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { XIcon } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -20,6 +22,7 @@ import {
 } from "@/components/ui/carousel"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
+import ImageWSkeleton from "@/components/ImageWSkeleton"
 import { AlbumArtwork } from "@/components/album-artwork"
 import { fadeInAnimation } from "@/components/animations/fadeInAnimation"
 
@@ -27,32 +30,32 @@ import { fadeInAnimation } from "@/components/animations/fadeInAnimation"
 const achievements = [
   {
     name: "Bachiller en Ciencias",
-    cover: "/images/achievements/achievement1.png",
+    cover: "/images/achievements/achievement1.webp",
     artist: "Colegio Don Bosco",
   },
   {
     name: "Ingeniero en Producción",
-    cover: "/images/achievements/achievement2.png",
+    cover: "/images/achievements/achievement2.webp",
     artist: "UNIMET.",
   },
   {
     name: "Ingeniero en Sistemas",
-    cover: "/images/achievements/achievement3.png",
+    cover: "/images/achievements/achievement3.webp",
     artist: "UNIMET.",
   },
   {
     name: "Música",
-    cover: "/images/achievements/achievement4.png",
+    cover: "/images/achievements/achievement4.webp",
     artist: "UNIMET",
   },
   {
     name: "Junta Directiva",
-    cover: "/images/achievements/achievement5.png",
+    cover: "/images/achievements/achievement5.webp",
     artist: "FCE UNIMET",
   },
   {
     name: "Beca Académica",
-    cover: "/images/achievements/achievement6.png",
+    cover: "/images/achievements/achievement6.webp",
     artist: "UNIMET",
   },
 ]
@@ -68,34 +71,29 @@ export default function ProfilePage() {
   const [isVideoVisible, setIsVideoVisible] = useState(true)
 
   const familyPhotos = Array.from({ length: 12 }).map(
-    (_, index) => `/images/family/family${index + 1}.png`
+    (_, index) => `/images/family/family${index + 1}.webp`
   )
 
   const culturaPhotos = Array.from({ length: 8 }).map(
-    (_, index) => `/images/canada/canada${index + 1}.png`
+    (_, index) => `/images/canada/canada${index + 1}.webp`
   )
 
   const leadershipPhotos = Array.from({ length: 8 }).map(
-    (_, index) => `/images/leadership/leadership${index + 1}.png`
+    (_, index) => `/images/leadership/leadership${index + 1}.webp`
   )
 
   const peoplePhotos = Array.from({ length: 10 }).map(
-    (_, index) => `/images/people/people${index + 1}.png`
+    (_, index) => `/images/people/people${index + 1}.webp`
   )
 
   return (
     <motion.div {...fadeInAnimation} className="px-4 py-6 lg:px-8">
       {/* Avatar y Nombre */}
       <div className="mb-8 text-center">
-        <Image
-          src="/profile.png"
-          width={150}
-          height={150}
-          alt="[Tu Nombre]"
-          className="mx-auto rounded-full"
-          loading="lazy"
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lPAAAAA=="
+        <ImageWSkeleton
+          src="/profile.webp"
+          alt={`Carlos Horacio Carrasquero`}
+          className="mx-auto size-[150px] rounded-full object-cover"
         />
         <h1 className="mt-4 text-2xl font-semibold">
           Carlos Horacio Carrasquero Quintini
@@ -161,25 +159,27 @@ export default function ProfilePage() {
 
               <div className="flex justify-center">
                 <Carousel
-                  className="w-full max-w-lg"
+                  className="mx-auto w-full max-w-3xl"
                   opts={{ loop: true, align: "start", slidesToScroll: 1 }}
                 >
-                  <CarouselContent className="-ml-4 flex">
+                  <CarouselContent className="shrink-0 basis-full pl-4 sm:basis-1/3">
                     {familyPhotos.map((src, index) => (
                       <CarouselItem
                         key={index}
                         className="shrink-0 basis-full pl-4 sm:basis-1/3"
                       >
                         <div className="p-1">
-                          <Image
-                            src={src}
-                            alt={`Foto de Familia ${index + 1}`}
-                            width={500}
-                            height={500}
-                            className="rounded-md shadow-md"
-                            objectFit="cover"
-                            loading="lazy"
-                          />
+                          <Card>
+                            <CardContent className="flex aspect-square items-center justify-center p-6">
+                              <ImageWSkeleton
+                                src={src}
+                                alt={`Foto de Familia ${index + 1}`}
+                                className={cn(
+                                  "size-auto h-full object-contain transition-all hover:scale-105"
+                                )}
+                              />
+                            </CardContent>
+                          </Card>
                         </div>
                       </CarouselItem>
                     ))}
@@ -230,7 +230,7 @@ export default function ProfilePage() {
 
               <div className="flex justify-center">
                 <Carousel
-                  className="w-full max-w-lg"
+                  className="flex w-full max-w-lg items-center"
                   opts={{ loop: true, align: "start", slidesToScroll: 1 }}
                 >
                   <CarouselContent className="-ml-4 flex">
@@ -240,15 +240,17 @@ export default function ProfilePage() {
                         className="shrink-0 basis-full pl-4 sm:basis-1/3"
                       >
                         <div className="p-1">
-                          <Image
-                            src={src}
-                            alt={`Foto de Cultura ${index + 1}`}
-                            width={500}
-                            height={500}
-                            className="rounded-md shadow-md"
-                            objectFit="cover"
-                            loading="lazy"
-                          />
+                          <Card>
+                            <CardContent className="flex aspect-square items-center justify-center p-6">
+                              <ImageWSkeleton
+                                src={src}
+                                alt={`Foto cultural ${index + 1}`}
+                                className={cn(
+                                  "size-auto h-full object-contain transition-all hover:scale-105"
+                                )}
+                              />
+                            </CardContent>
+                          </Card>
                         </div>
                       </CarouselItem>
                     ))}
@@ -299,25 +301,27 @@ export default function ProfilePage() {
 
               <div className="flex justify-center">
                 <Carousel
-                  className="w-full max-w-lg"
+                  className="flex w-full max-w-lg items-center"
                   opts={{ loop: true, align: "start", slidesToScroll: 1 }}
                 >
-                  <CarouselContent className="-ml-4 flex">
+                  <CarouselContent className="-ml-4 flex items-center">
                     {leadershipPhotos.map((src, index) => (
                       <CarouselItem
                         key={index}
                         className="shrink-0 basis-full pl-4 sm:basis-1/3"
                       >
                         <div className="p-1">
-                          <Image
-                            src={src}
-                            alt={`Foto de Liderazgo ${index + 1}`}
-                            width={500}
-                            height={500}
-                            className="rounded-md shadow-md"
-                            objectFit="cover"
-                            loading="lazy"
-                          />
+                          <Card>
+                            <CardContent className="flex aspect-square items-center justify-center p-6">
+                              <ImageWSkeleton
+                                src={src}
+                                alt={`Liderazgo ${index + 1}`}
+                                className={cn(
+                                  "size-auto h-full object-contain transition-all hover:scale-105"
+                                )}
+                              />
+                            </CardContent>
+                          </Card>
                         </div>
                       </CarouselItem>
                     ))}
@@ -362,25 +366,27 @@ export default function ProfilePage() {
 
               <div className="flex justify-center">
                 <Carousel
-                  className="w-full max-w-lg"
+                  className="flex w-full max-w-lg items-center"
                   opts={{ loop: true, align: "start", slidesToScroll: 1 }}
                 >
-                  <CarouselContent className="-ml-4 flex">
+                  <CarouselContent className="-ml-4 flex items-center">
                     {peoplePhotos.map((src, index) => (
                       <CarouselItem
                         key={index}
                         className="shrink-0 basis-full pl-4 sm:basis-1/3"
                       >
                         <div className="p-1">
-                          <Image
-                            src={src}
-                            alt={`Foto de Compañerismo ${index + 1}`}
-                            width={500}
-                            height={500}
-                            className="rounded-md shadow-md"
-                            objectFit="cover"
-                            loading="lazy"
-                          />
+                          <Card>
+                            <CardContent className="flex aspect-square items-center justify-center p-6">
+                              <ImageWSkeleton
+                                src={src}
+                                alt={`Impacto ${index + 1}`}
+                                className={cn(
+                                  "size-auto h-full object-contain transition-all hover:scale-105"
+                                )}
+                              />
+                            </CardContent>
+                          </Card>
                         </div>
                       </CarouselItem>
                     ))}

@@ -42,14 +42,110 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   const assetsToLoad = [
-    { type: "image", src: "/images/sports/soccer.png" },
-    { type: "image", src: "/images/academic/tesis.png" },
-    { type: "image", src: "/images/music/esquina.png" },
-    { type: "image", src: "/images/family/royale.png" },
-    { type: "image", src: "/images/engineering/tech.png" },
-    { type: "image", src: "/images/music/koga.png" },
-    { type: "image", src: "/images/people/cono.png" },
-    { type: "audio", src: "/music/music.mp3" },
+    // Academic
+    { type: "image", src: "/images/academic/tesis.webp" },
+
+    // Achievements
+    { type: "image", src: "/images/achievements/achievement1.webp" },
+    { type: "image", src: "/images/achievements/achievement2.webp" },
+    { type: "image", src: "/images/achievements/achievement3.webp" },
+    { type: "image", src: "/images/achievements/achievement4.webp" },
+    { type: "image", src: "/images/achievements/achievement5.webp" },
+    { type: "image", src: "/images/achievements/achievement6.webp" },
+
+    // Canada
+    { type: "image", src: "/images/canada/canada1.webp" },
+    { type: "image", src: "/images/canada/canada2.webp" },
+    { type: "image", src: "/images/canada/canada3.webp" },
+    { type: "image", src: "/images/canada/canada4.webp" },
+    { type: "image", src: "/images/canada/canada5.webp" },
+    { type: "image", src: "/images/canada/canada6.webp" },
+    { type: "image", src: "/images/canada/canada7.webp" },
+    { type: "image", src: "/images/canada/canada8.webp" },
+
+    // Engineering
+    { type: "image", src: "/images/engineering/engineering1.webp" },
+    { type: "image", src: "/images/engineering/engineering2.webp" },
+    { type: "image", src: "/images/engineering/engineering3.webp" },
+    { type: "image", src: "/images/engineering/engineering4.webp" },
+    { type: "image", src: "/images/engineering/engineering5.webp" },
+    { type: "image", src: "/images/engineering/engineering6.webp" },
+    { type: "image", src: "/images/engineering/engineering7.webp" },
+    { type: "image", src: "/images/engineering/engineering8.webp" },
+    { type: "image", src: "/images/engineering/engineering9.webp" },
+    { type: "image", src: "/images/engineering/engineering10.webp" },
+    { type: "image", src: "/images/engineering/engineering11.webp" },
+    { type: "image", src: "/images/engineering/engineering12.webp" },
+    { type: "image", src: "/images/engineering/tech.webp" },
+
+    // Family
+    { type: "image", src: "/images/family/family1.webp" },
+    { type: "image", src: "/images/family/family2.webp" },
+    { type: "image", src: "/images/family/family3.webp" },
+    { type: "image", src: "/images/family/family4.webp" },
+    { type: "image", src: "/images/family/family5.webp" },
+    { type: "image", src: "/images/family/family6.webp" },
+    { type: "image", src: "/images/family/family7.webp" },
+    { type: "image", src: "/images/family/family8.webp" },
+    { type: "image", src: "/images/family/family9.webp" },
+    { type: "image", src: "/images/family/family10.webp" },
+    { type: "image", src: "/images/family/family11.webp" },
+    { type: "image", src: "/images/family/family12.webp" },
+
+    // Leadership
+    { type: "image", src: "/images/leadership/leadership1.webp" },
+    { type: "image", src: "/images/leadership/leadership2.webp" },
+    { type: "image", src: "/images/leadership/leadership3.webp" },
+    { type: "image", src: "/images/leadership/leadership4.webp" },
+    { type: "image", src: "/images/leadership/royale.webp" },
+
+    // Music
+    { type: "image", src: "/images/music/esquina.webp" },
+    { type: "image", src: "/images/music/koga.webp" },
+    { type: "image", src: "/images/music/music1.webp" },
+    { type: "image", src: "/images/music/music2.webp" },
+    { type: "image", src: "/images/music/music3.webp" },
+    { type: "image", src: "/images/music/music4.webp" },
+    { type: "image", src: "/images/music/music5.webp" },
+    { type: "image", src: "/images/music/music6.webp" },
+    { type: "image", src: "/images/music/music7.webp" },
+    { type: "image", src: "/images/music/music8.webp" },
+    { type: "image", src: "/images/music/music9.webp" },
+    { type: "audio", src: "/music/music.mp3" }, // Archivo de audio
+
+    // People
+    { type: "image", src: "/images/people/people1.webp" },
+    { type: "image", src: "/images/people/people2.webp" },
+    { type: "image", src: "/images/people/people3.webp" },
+    { type: "image", src: "/images/people/people4.webp" },
+    { type: "image", src: "/images/people/people5.webp" },
+    { type: "image", src: "/images/people/people6.webp" },
+    { type: "image", src: "/images/people/people7.webp" },
+    { type: "image", src: "/images/people/people8.webp" },
+    { type: "image", src: "/images/people/people9.webp" },
+    { type: "image", src: "/images/people/people10.webp" },
+
+    // Sports
+    { type: "image", src: "/images/sports/soccer.webp" },
+    { type: "image", src: "/images/sports/sport1.webp" },
+    { type: "image", src: "/images/sports/sport2.webp" },
+    { type: "image", src: "/images/sports/sport3.webp" },
+    { type: "image", src: "/images/sports/sport4.webp" },
+    { type: "image", src: "/images/sports/sport5.webp" },
+    { type: "image", src: "/images/sports/sport6.webp" },
+    { type: "image", src: "/images/sports/sport7.webp" },
+    { type: "image", src: "/images/sports/sport8.webp" },
+    { type: "image", src: "/images/sports/sport9.webp" },
+    { type: "image", src: "/images/sports/sport10.webp" },
+    { type: "image", src: "/images/sports/sport11.webp" },
+    { type: "image", src: "/images/sports/sport12.webp" },
+    { type: "image", src: "/images/sports/sport13.webp" },
+    { type: "image", src: "/images/sports/sport14.webp" },
+    { type: "image", src: "/images/sports/sport15.webp" },
+    { type: "image", src: "/images/sports/sport16.webp" },
+
+    // Profile
+    { type: "image", src: "/profile.webp" },
   ]
 
   return (
@@ -63,7 +159,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <ClientWrapper assets={assetsToLoad}>
+            <ClientWrapper assets={assetsToLoad as any}>
               <div className="relative flex min-h-screen flex-col overflow-x-hidden">
                 <SiteHeader />
                 <AnimatedMain>

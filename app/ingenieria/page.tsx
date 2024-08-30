@@ -5,6 +5,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Cpu } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -17,6 +18,7 @@ import {
 import Leaderboard from "@/components/ui/leaderboard"
 import { Blockquote, BlockquoteAuthor } from "@/components/ui/quote"
 import { Footer } from "@/components/Footer"
+import ImageWSkeleton from "@/components/ImageWSkeleton"
 import ParticlesBackground from "@/components/ParticlesBackground"
 import TechStack from "@/components/TechStack"
 import { fadeInAnimation } from "@/components/animations/fadeInAnimation"
@@ -39,7 +41,7 @@ export default function EngineeringPage() {
   ]
 
   const images = Array.from({ length: 12 }).map(
-    (_, index) => `/images/engineering/engineering${index + 1}.png`
+    (_, index) => `/images/engineering/engineering${index + 1}.webp`
   )
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
@@ -161,16 +163,12 @@ export default function EngineeringPage() {
                     <div className="p-1">
                       <Card>
                         <CardContent className="flex aspect-square items-center justify-center p-6">
-                          <Image
+                          <ImageWSkeleton
                             src={src}
-                            alt={`Proyecto ${index + 1}`}
-                            width={500}
-                            height={500}
-                            className="rounded-md shadow-md"
-                            objectFit="cover"
-                            loading="lazy"
-                            placeholder="blur"
-                            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lPAAAAA=="
+                            alt={`Foto ${index + 1}`}
+                            className={cn(
+                              "size-auto h-full object-contain transition-all hover:scale-105"
+                            )}
                           />
                         </CardContent>
                       </Card>

@@ -5,6 +5,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Lightbulb } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -16,6 +17,7 @@ import {
 } from "@/components/ui/carousel"
 import Leaderboard from "@/components/ui/leaderboard"
 import { Blockquote, BlockquoteAuthor } from "@/components/ui/quote"
+import ImageWSkeleton from "@/components/ImageWSkeleton"
 import MusicSection from "@/components/MusicSection"
 import { fadeInAnimation } from "@/components/animations/fadeInAnimation"
 
@@ -29,7 +31,7 @@ export default function MusicPage() {
   ]
 
   const images = Array.from({ length: 9 }).map(
-    (_, index) => `/images/music/music${index + 1}.png`
+    (_, index) => `/images/music/music${index + 1}.webp`
   )
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
@@ -128,16 +130,12 @@ export default function MusicPage() {
                   <div className="p-1">
                     <Card>
                       <CardContent className="flex aspect-square items-center justify-center p-6">
-                        <Image
+                        <ImageWSkeleton
                           src={src}
                           alt={`Foto ${index + 1}`}
-                          width={500}
-                          height={500}
-                          className="rounded-md shadow-md"
-                          objectFit="cover"
-                          loading="lazy"
-                          placeholder="blur"
-                          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lPAAAAA=="
+                          className={cn(
+                            "size-auto h-full object-contain transition-all hover:scale-105"
+                          )}
                         />
                       </CardContent>
                     </Card>

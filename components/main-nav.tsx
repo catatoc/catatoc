@@ -47,7 +47,7 @@ export function MainNav({ items }: MainNavProps) {
     <div className="flex gap-6 md:gap-10">
       <Link href={targetHref} className="relative flex items-center space-x-2">
         <Avatar className="relative">
-          <AvatarImage src="/profile.png" alt="@catatoc" />
+          <AvatarImage src="/profile.webp" alt="@catatoc" />
           <AvatarFallback>CC</AvatarFallback>
           {showNotificationDot && (
             <span className="absolute bottom-1 right-1 z-50 block size-3 animate-ping rounded-full bg-green-300"></span>

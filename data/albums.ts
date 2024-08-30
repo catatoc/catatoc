@@ -8,47 +8,52 @@ export const listenNowAlbums: Album[] = [
   {
     name: "Esfuerzo Académico",
     artist: "Ingeniería de Producción y Sistemas",
-    cover: "/images/academic/tesis.png",
+    cover: "/images/academic/tesis.webp",
   },
   {
     name: "Música",
     artist: "Bandas musicales, grupos artísticos",
-    cover: "/images/music/esquina.png",
+    cover: "/images/music/esquina.webp",
   },
   {
     name: "Liderazgo",
     artist: "Docencia, Centro de Estudiantes, Equipos",
-    cover: "/images/people/people3.png",
+    cover: "/images/people/people3.webp",
   },
   {
     name: "Familia",
     artist: "Valores y Tradiciones",
-    cover: "/images/family/royale.png",
+    cover: "/images/family/royale.webp",
   },
   {
     name: "Deporte",
     artist: "Representando a 🇻🇪 en 🇪🇸",
-    cover: "/images/sports/sport13.png",
+    cover: "/images/sports/sport13.webp",
   },
   {
     name: "Atención al detalle",
     artist: "Pasión por la Excelencia",
-    cover: "/images/music/koga.png",
+    cover: "/images/music/koga.webp",
   },
   {
     name: "Ingenio",
     artist: "Nuevos Productos",
-    cover: "/images/engineering/engineering1.png",
+    cover: "/images/engineering/engineering1.webp",
   },
   {
     name: "Impacto",
     artist: "Influencia positiva",
-    cover: "/images/leadership/leadership1.png",
+    cover: "/images/leadership/leadership1.webp",
+  },
+  {
+    name: "Fútbol",
+    artist: "Pasión por el Deporte",
+    cover: "/images/sports/sport12.webp",
   },
   {
     name: "Tecnología",
     artist: "Curiosidad desde la Infancia",
-    cover: "/images/engineering/tech.png",
+    cover: "/images/engineering/tech.webp",
   },
 ]
 

@@ -4,9 +4,14 @@ import { useState } from "react"
 
 import Preloader from "@/components/PreLoader"
 
+interface Asset {
+  type: "image" | "video" | "audio" | "unknown"
+  src: string
+}
+
 interface ClientWrapperProps {
   children: React.ReactNode
-  assets: { type: string; src: string }[]
+  assets: Asset[]
 }
 
 export const ClientWrapper = ({ children, assets }: ClientWrapperProps) => {

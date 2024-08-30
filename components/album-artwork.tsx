@@ -1,11 +1,11 @@
 "use client"
 
-import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Album } from "@/data/albums"
 
 import { cn } from "@/lib/utils"
 
+import ImageWSkeleton from "./ImageWSkeleton"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -41,19 +41,13 @@ export function AlbumArtwork({
       <ContextMenu>
         <ContextMenuTrigger>
           <div className="overflow-hidden rounded-md">
-            <Image
+            <ImageWSkeleton
               src={album.cover}
               alt={album.name}
-              width={width}
-              height={height}
-              quality={50}
               className={cn(
-                "size-auto object-cover transition-all hover:scale-105",
+                "size-auto h-full object-contain transition-all hover:scale-105",
                 aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
               )}
-              loading="lazy"
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lPAAAAA=="
             />
           </div>
         </ContextMenuTrigger>
