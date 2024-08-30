@@ -3,6 +3,8 @@ import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
+// Utilidad para manejar clases condicionales
+
 interface ImageWSkeletonProps {
   src?: string
   alt?: string
@@ -38,7 +40,8 @@ export default function ImageWSkeleton({
         className="absolute inset-0 z-0 bg-cover bg-center blur-2xl"
         style={{
           backgroundImage: `url(${src})`,
-          filter: "blur(20px)",
+          filter: imageLoading ? "blur(20px)" : "none",
+          transition: "filter 0.3s ease-in-out",
         }}
       />
 
