@@ -55,7 +55,7 @@ export default function ImageWSkeleton({
         alt={alt}
         onLoad={imageLoaded}
         className={cn(
-          "relative z-10 mx-auto max-h-full max-w-full object-contain",
+          "relative z-50 mx-auto max-h-full max-w-full object-contain",
           className
         )}
       />
