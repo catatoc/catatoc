@@ -44,7 +44,7 @@ function FAQChat() {
   const faqs = [
     {
       question: "¿Quién soy?",
-      answer: `Mi nombre es Carlos Horacio Carrasquero. Soy ingeniero, músico y deportista, apasionado por la innovación y la mejora continua. Me gusta pensar que mi vida gira en torno al "impacto" y al "ingenio", pues constantemente busco mejorar lo que ya existe a través de un enfoque eficiente y novedoso. Mi objetivo es generar un impacto positivo en la sociedad, manteniendo un espíritu profesional y entusiasta que me permita ofrecer la mejor versión de mí`,
+      answer: `Mi nombre es Carlos Horacio Carrasquero Quintini. Soy ingeniero, músico y deportista, apasionado por la innovación y la mejora continua. Me gusta pensar que mi vida gira en torno al "impacto" y al "ingenio", pues constantemente busco mejorar lo que ya existe a través de un enfoque eficiente y novedoso. Mi objetivo es generar un impacto positivo en la sociedad, manteniendo un espíritu profesional y entusiasta que me permita ofrecer la mejor versión de mí`,
     },
     {
       question: "¿Cuáles son mis pasiones?",

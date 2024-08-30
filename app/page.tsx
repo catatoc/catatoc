@@ -20,7 +20,7 @@ import SequenceTimeline from "@/components/timeline/SequenceTimeline"
 import EmojiConfetti from "@/components/triggerConfetti"
 
 export const metadata: Metadata = {
-  title: "Carlos Horacio Carrasquero",
+  title: "Carlos Horacio Carrasquero Quintini",
   description: "Sobre mí.",
 }
 
@@ -34,7 +34,7 @@ export default function MusicPage() {
           src="/examples/music-light.png"
           width={1280}
           height={1114}
-          alt="Carlos Horacio Carrasquero"
+          alt="Carlos Horacio Carrasquero Quintini"
           className="block dark:hidden"
         />
         <Image

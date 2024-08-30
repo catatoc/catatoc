@@ -96,7 +96,7 @@ export default function ProfilePage() {
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkAAIAAAoAAv/lPAAAAA=="
         />
         <h1 className="mt-4 text-2xl font-semibold">
-          Carlos Horacio Carrasquero
+          Carlos Horacio Carrasquero Quintini
         </h1>
       </div>
 

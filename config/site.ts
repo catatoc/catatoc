@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Carlos Horacio Carrasquero",
+  name: "Carlos Horacio Carrasquero Quintini",
   description: "Aplicación para cargo en empresas Polar.",
   mainNav: [
     {
