@@ -97,13 +97,13 @@ export default function ProfilePage() {
         <h2 className="text-2xl font-semibold tracking-tight">Mis Logros</h2>
         <Separator className="my-4" />
         <div className="relative">
-          <ScrollArea className="flex w-96 gap-4 whitespace-nowrap rounded-md border p-6 md:w-full">
+          <div className="flex w-96 gap-4 overflow-x-auto whitespace-nowrap rounded-md border p-6 md:w-full">
             <div className="flex space-x-12">
               {achievements.map((achievement) => (
                 <div
                   className="relative cursor-pointer"
                   key={achievement.name}
-                  onClick={() => setSelectedAchievement(achievement)} // Maneja el clic para abrir el modal
+                  onClick={() => setSelectedAchievement(achievement)}
                 >
                   <AlbumArtwork
                     album={achievement}
@@ -112,48 +112,12 @@ export default function ProfilePage() {
                     width={150}
                     height={150}
                   />
-                  <span className="absolute right-0 top-0 text-2xl">🏅</span>
+                  <span className="absolute right-0 top-0 z-50 text-2xl">
+                    🏅
+                  </span>
                 </div>
               ))}
             </div>
-            <ScrollBar orientation="horizontal" />
-          </ScrollArea>
-        </div>
-        <div className="relative">
-          <div className="flex space-x-12">
-            {achievements.map((achievement) => (
-              <div
-                className="relative cursor-pointer"
-                key={achievement.name}
-                onClick={() => setSelectedAchievement(achievement)} // Maneja el clic para abrir el modal
-              >
-                <AlbumArtwork
-                  album={achievement}
-                  className="w-[150px] shrink-0"
-                  aspectRatio="square"
-                  width={150}
-                  height={150}
-                />
-                <span className="absolute right-0 top-0 text-2xl">🏅</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="relative">
-          <div className="flex space-x-12">
-            {achievements.map((achievement) => (
-              <div
-                className="relative cursor-pointer"
-                key={achievement.name}
-                onClick={() => setSelectedAchievement(achievement)}
-              >
-                <ImageWSkeleton
-                  src={achievement.cover}
-                  alt={achievement.name}
-                  className="size-[150px] object-contain"
-                />
-              </div>
-            ))}
           </div>
         </div>
       </div>

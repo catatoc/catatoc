@@ -86,7 +86,7 @@ export default function MusicPage() {
                       </div>
                       <Separator className="my-4" />
                       <div className="relative">
-                        <ScrollArea className="w-screen whitespace-nowrap lg:w-full">
+                        <div className="custom-scrollbar w-screen overflow-x-auto whitespace-nowrap lg:w-full">
                           <div className="flex space-x-4 pb-4">
                             {listenNowAlbums.map((album) => (
                               <EmojiConfetti key={album.name} emoji={emoji}>
@@ -100,9 +100,9 @@ export default function MusicPage() {
                               </EmojiConfetti>
                             ))}
                           </div>
-                          <ScrollBar orientation="horizontal" />
-                        </ScrollArea>
+                        </div>
                       </div>
+
                       <TechStackScroll />
                     </TabsContent>
 
