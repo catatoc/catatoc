@@ -20,7 +20,7 @@ export function LoadingNav({ items }: LoadingNavProps) {
       <div className="relative flex items-center space-x-2">
         <Avatar className="relative">
           <AvatarImage src="/profile.webp" alt="@catatoc" />
-          <AvatarFallback>CC</AvatarFallback>
+          <AvatarFallback>👨🏼‍🦲</AvatarFallback>
         </Avatar>
         <span className="hidden font-bold md:inline-block">
           {siteConfig.name}

@@ -38,16 +38,28 @@ export function AlbumArtwork({
 
   return (
     <div className={cn("space-y-3", className)} {...props}>
-      <div className="overflow-hidden rounded-md">
-        <ImageWSkeleton
-          src={album.cover}
-          alt={album.name}
-          className={cn(
-            "size-auto h-full object-contain transition-all hover:scale-105",
-            aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
-          )}
-        />
-      </div>
+      <ContextMenu>
+        <ContextMenuTrigger>
+          <div className="overflow-hidden rounded-md">
+            <ImageWSkeleton
+              src={album.cover}
+              alt={album.name}
+              className={cn(
+                "size-auto h-full object-contain transition-all hover:scale-105",
+                aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
+              )}
+            />
+          </div>
+        </ContextMenuTrigger>
+        <ContextMenuContent className="w-40">
+          <ContextMenuItem onSelect={redirectToProfile}>
+            <span role="img" aria-label="Happy Face" className="mr-2 text-xl">
+              😁
+            </span>
+            Ir a Perfil
+          </ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>
       <div className="space-y-1 text-sm">
         <h3 className="font-medium leading-none">{album.name}</h3>
         <p className="text-xs text-muted-foreground">{album.artist}</p>

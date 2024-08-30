@@ -119,6 +119,43 @@ export default function ProfilePage() {
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
         </div>
+        <div className="relative">
+          <div className="flex space-x-12">
+            {achievements.map((achievement) => (
+              <div
+                className="relative cursor-pointer"
+                key={achievement.name}
+                onClick={() => setSelectedAchievement(achievement)} // Maneja el clic para abrir el modal
+              >
+                <AlbumArtwork
+                  album={achievement}
+                  className="w-[150px] shrink-0"
+                  aspectRatio="square"
+                  width={150}
+                  height={150}
+                />
+                <span className="absolute right-0 top-0 text-2xl">🏅</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="relative">
+          <div className="flex space-x-12">
+            {achievements.map((achievement) => (
+              <div
+                className="relative cursor-pointer"
+                key={achievement.name}
+                onClick={() => setSelectedAchievement(achievement)}
+              >
+                <ImageWSkeleton
+                  src={achievement.cover}
+                  alt={achievement.name}
+                  className="size-[150px] object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Secciones con Acordeones */}
