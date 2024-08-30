@@ -8,6 +8,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel"
 
 export function AlertsCarousel() {
@@ -72,46 +74,58 @@ export function AlertsCarousel() {
       >
         <XIcon className="size-4 text-gray-600" />
       </button>
-
-      <Carousel className="w-full overflow-hidden" ref={carouselRef}>
+      <Carousel
+        className="flex w-full flex-col overflow-hidden"
+        ref={carouselRef}
+        opts={{
+          loop: true,
+          align: "start",
+          slidesToScroll: 1,
+          containScroll: "trimSnaps",
+        }}
+      >
         <CarouselContent className="flex w-full">
           <CarouselItem className="w-full shrink-0">
-            <Alert>
+            <Alert className="relative">
               <AlertTitle>👋🏼 ¡Hola!</AlertTitle>
-              <AlertDescription>
+              <AlertDescription className="relative">
                 Este es un espacio donde comparto una descripción sobre mí, mis
                 intereses, habilidades y pasiones.
               </AlertDescription>
             </Alert>
+            <p className="absolute bottom-0.5 right-2 w-fit">👉🏼</p>
           </CarouselItem>
 
           <CarouselItem className="w-full shrink-0">
-            <Alert variant="success">
+            <Alert variant="success" className="relative">
               <AlertTitle>😁 Explora Mi Perfil Personal</AlertTitle>
-              <AlertDescription>
+              <AlertDescription className="relative">
                 Para conocer más sobre mi historia, valores y aspectos
                 personales, visita mi perfil.
                 <a href="/perfil" className="ml-1 underline">
-                  Conoce más sobre mí
+                  Conoce más sobre mí.
                 </a>
-                .
               </AlertDescription>
+              <p className="absolute bottom-0.5 right-2 w-fit">👉🏼</p>
             </Alert>
           </CarouselItem>
 
           <CarouselItem className="w-full shrink-0">
-            <Alert>
+            <Alert className="relative">
               <AlertTitle>🙋🏻 ¿Tienes Preguntas?</AlertTitle>
-              <AlertDescription>
+              <AlertDescription className="relative">
                 Hay un botón flotante en la parte inferior derecha (
                 <span role="img" aria-label="message">
                   💬
                 </span>
-                ) donde puedes acceder al chat de preguntas frecuentes.
+                ) donde puedes descubrir más detalles sobre mí.
               </AlertDescription>
+              <p className="absolute bottom-0.5 right-2 w-fit">👉🏼</p>
             </Alert>
           </CarouselItem>
         </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
       </Carousel>
     </div>
   )

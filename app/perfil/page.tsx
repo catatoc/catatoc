@@ -141,7 +141,7 @@ export default function ProfilePage() {
               <div>
                 <p className="text-lg">
                   Mi familia es <strong>mi mayor fortaleza</strong>. Somos una
-                  familia <strong>numerosa y unida</strong> que han moldeado mis
+                  familia <strong>numerosa y unida</strong> que ha moldeado mis
                   valores y mi forma de ver la vida. Desde pequeño, aprendí la
                   importancia de la{" "}
                   <strong>solidaridad, el respeto y el amor</strong> hacia los
@@ -200,12 +200,13 @@ export default function ProfilePage() {
               <div>
                 <h3 className="text-xl font-semibold">🇻🇪 Venezuela</h3>
                 <p className="mt-2 text-lg">
-                  Es sin duda un país especial. Aquí crecí y aprendí la
+                  Es sin duda un país especial para mí. Aquí crecí y aprendí la
                   importancia de ser feliz sin importar los obstáculos. Un país
-                  que me lo ha dado todo y que me ha dado los mejores amigos,
-                  familia, pareja. La riqueza de su cultura, la calidez de la
-                  gente y la belleza de sus paisajes naturales hacen de Caracas
-                  y Venezuela un hogar único.
+                  que me ha dado una vida memorable y la oporunidad de rodearme
+                  de personas únicas; mis mejores amigos, mi familia y mi
+                  pareja. La riqueza de su cultura, la calidez de la gente y la
+                  belleza de sus paisajes naturales hacen de Caracas y Venezuela
+                  un hogar único.
                 </p>
 
                 <h3 className="mt-8 text-xl font-semibold">🇨🇦 Canadá</h3>
@@ -287,7 +288,7 @@ export default function ProfilePage() {
                   aprendido a <strong>inspirar y motivar</strong> a los demás,
                   adaptándome a diferentes audiencias y situaciones. En cada uno
                   de estos roles, la <strong>disciplina</strong>, la{" "}
-                  <strong>resiliencia</strong>, y la{" "}
+                  <strong>resiliencia</strong> y la{" "}
                   <strong>colaboración</strong> son esenciales. Creo en el
                   liderazgo que empodera, que permite a cada individuo
                   desarrollar su potencial máximo.

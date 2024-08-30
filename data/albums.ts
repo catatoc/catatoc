@@ -38,7 +38,7 @@ export const listenNowAlbums: Album[] = [
   {
     name: "Ingenio",
     artist: "Nuevos Productos",
-    cover: "/images/leadership/leadership2.png",
+    cover: "/images/engineering/engineering1.png",
   },
   {
     name: "Impacto",

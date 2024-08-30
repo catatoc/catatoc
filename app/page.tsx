@@ -4,6 +4,7 @@ import { listenNowAlbums, madeForYouAlbums } from "@/data/albums"
 import { playlists } from "@/data/playlists"
 import { Grid, List } from "lucide-react"
 
+import { useCarousel } from "@/components/ui/carousel"
 // Asegúrate de importar los iconos adecuados
 
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
@@ -72,18 +73,18 @@ export default function MusicPage() {
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
                           <h2 className="text-2xl font-semibold tracking-tight">
-                            Sobre mí
+                            Galería
                           </h2>
                           <p className="text-sm text-muted-foreground">
-                            A continuación encontrarás algunas fotos que me
-                            definen. Puedes encontrar más en las secciones de
+                            A continuación encontrarás una galería de fotos que
+                            me definen. Puedes encontrar más en las secciones de
                             Música, Deportes, Ingeniería y en mi Perfil.
                           </p>
                         </div>
                       </div>
                       <Separator className="my-4" />
                       <div className="relative">
-                        <ScrollArea className="w-96 whitespace-nowrap md:w-full">
+                        <ScrollArea className="w-screen whitespace-nowrap lg:w-full">
                           <div className="flex space-x-4 pb-4">
                             {listenNowAlbums.map((album) => (
                               <EmojiConfetti key={album.name} emoji={emoji}>

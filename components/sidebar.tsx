@@ -44,7 +44,7 @@ export function Sidebar({ className }: { className?: string }) {
               <span role="img" aria-label="message">
                 💬
               </span>
-              ) donde puedes acceder al chat de preguntas frecuentes.
+              ) donde puedes descubrir más detalles sobre mí.
             </AlertDescription>
           </Alert>
         </div>

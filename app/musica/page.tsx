@@ -20,10 +20,10 @@ import MusicSection from "@/components/MusicSection"
 export default function MusicPage() {
   const valoresMusica = [
     "Disciplina",
-    "Flexibilidad Mental",
+    "Flexibilidad",
     "Trabajo en Equipo",
     "Creatividad",
-    "Perseverancia",
+    "Constancia",
   ]
 
   const images = Array.from({ length: 9 }).map(
@@ -68,7 +68,7 @@ export default function MusicPage() {
       <MusicSection />
 
       <div className="mt-12">
-        <h1 className="mb-4 text-4xl font-bold">Música</h1>
+        <h1 className="mb-4 text-4xl font-bold">Música 🎵</h1>
         <p className="mb-6">
           Comencé con el piano a los 15 en festivales escolares y seguí
           explorando la música con Gerry Weil, el jazz, y la producción
@@ -79,12 +79,13 @@ export default function MusicPage() {
 
         <Alert variant="success" className="my-6">
           <Lightbulb className="size-4" />
-          <AlertTitle>De lo más importante</AlertTitle>
+          <AlertTitle>Importante</AlertTitle>
           <AlertDescription>
-            La música da mucha paciencia, perseverancia, trabajo duro y aprender
-            a improvisar. Si te equivocas en una nota, tienes que seguir y
-            resolver en el camino para que el oyente no pierda la magia de la
-            experiencia.
+            La música implica tener paciencia, ser constante, trabajar duro y
+            aprender a improvisar. Cometer errores es parte de la cotidianidad
+            musical (y de la vida en general) y el verdadero desafío está en
+            resolver con inmediatez para que la melodía no se vea afectada y que
+            el oyente no pierda la magia de la experiencia.
           </AlertDescription>
         </Alert>
 

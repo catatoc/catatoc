@@ -68,7 +68,7 @@ export default function SportsPage() {
       <FootballEntrance />
 
       <div className="mt-12 flex flex-col">
-        <h1 className="mb-4 text-4xl font-bold">Deporte</h1>
+        <h1 className="mb-4 text-4xl font-bold">Deporte 🏃🏻</h1>
         <p className="mb-6">
           El deporte siempre ha estado presente en mi vida. He aprendido valores
           como el trabajo en equipo, la disciplina, y la perseverancia a través
@@ -79,7 +79,7 @@ export default function SportsPage() {
 
         <Alert variant="success" className="my-6">
           <Lightbulb className="size-4" />
-          <AlertTitle>De lo más importante</AlertTitle>
+          <AlertTitle>Importante</AlertTitle>
           <AlertDescription>
             El deporte enseña respeto al rival, sana competencia, el poder de la
             mente, aprender a ganar y aprender a perder.

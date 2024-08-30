@@ -35,6 +35,12 @@ const experiences: ExperienceItem[] = [
     level: "Intermedio",
   },
   {
+    emoji: "🗓️",
+    name: "Planificación",
+    description: "Fechas críticas, manejo de equipo, estructura.",
+    level: "Avanzado",
+  },
+  {
     emoji: "🔄",
     name: "Mejora Continua",
     description:
@@ -135,7 +141,7 @@ const ExperiencesScroll = () => {
       </div>
       <Separator className="my-4" />
 
-      <ScrollArea className="w-96 whitespace-nowrap md:w-full">
+      <ScrollArea className="w-screen whitespace-nowrap md:w-screen lg:w-full">
         <div className="flex space-x-4 pb-4">
           {sortedExperiences.map((experience, index) => (
             <Card
@@ -150,13 +156,13 @@ const ExperiencesScroll = () => {
               </CardHeader>
               <CardContent className="text-center">
                 <h3 className="text-sm font-semibold">{experience.name}</h3>
-                <div className="mt-2">
+                <div className="mt-2 hidden">
                   <p className="text-xs text-muted-foreground">
                     {experience.level}
                   </p>
                   <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
                     <div
-                      className={`h-full ${
+                      className={`hidden h-full ${
                         experience.level === "Avanzado"
                           ? "w-3/4 bg-green-500"
                           : experience.level === "Intermedio"

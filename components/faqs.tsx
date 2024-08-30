@@ -16,7 +16,7 @@ export default function Chatbot() {
       {isOpen ? (
         <Card className="w-full max-w-md rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800 dark:text-white sm:max-w-xs md:max-w-sm">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Preguntas Frecuentes</h2>
+            <h2 className="text-lg font-semibold">Consulta Aquí 👇🏼</h2>
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)}>
               ✖️
             </Button>
@@ -44,19 +44,19 @@ function FAQChat() {
   const faqs = [
     {
       question: "¿Quién soy?",
-      answer: `Mi nombre es Carlos Horacio Carrasquero. Soy ingeniero, músico y deportista, apasionado por la innovación y la mejora continua. Me gusta pensar que mi vida gira en torno al "impacto" y al "ingenio", siempre buscando maneras de hacer las cosas mejor y con más eficiencia.`,
+      answer: `Mi nombre es Carlos Horacio Carrasquero. Soy ingeniero, músico y deportista, apasionado por la innovación y la mejora continua. Me gusta pensar que mi vida gira en torno al "impacto" y al "ingenio", pues constantemente busco mejorar lo que ya existe a través de un enfoque eficiente y novedoso. Mi objetivo es generar un impacto positivo en la sociedad, manteniendo un espíritu profesional y entusiasta que me permita ofrecer la mejor versión de mí`,
     },
     {
       question: "¿Cuáles son mis pasiones?",
-      answer: `Mis tres grandes pasiones son la ingeniería, la música y los deportes. La ingeniería me permite aplicar el ingenio para resolver problemas; la música me da la capacidad de conectar y comunicar de manera única; y los deportes me enseñan disciplina, trabajo en equipo y resiliencia.`,
+      answer: `Mis tres grandes pasiones son la ingeniería, la música y los deportes. La ingeniería me permite abstraerme de lo cotidiano, observar las situaciones de otra perspectiva y resolver problemas; la música me da la capacidad de conectar y comunicar de manera única; y los deportes me enseñan disciplina, trabajo en equipo y resiliencia.`,
     },
     {
       question: "¿Cómo puedo aportar al área de Innovación?",
-      answer: `Creo que mi pasión por la ingeniería y la innovación es lo que más puede contribuir al área de Innovación y Nuevos Negocios. Estoy constantemente evaluando nuevas formas de mejorar procesos y productos, lo que se alinea con la misión del departamento de evaluar nuevas zonas de interés para productos y servicios que generen un impacto positivo en la sociedad.`,
+      answer: `Mi pasión por la ingeniería y la mejora continua es lo que más puede contribuir al área de Innovación y Nuevos Negocios. Estoy constantemente evaluando nuevas formas de mejorar procesos y productos, lo que se alinea con la misión del departamento de evaluar nuevas zonas de interés para productos y servicios que generen un impacto positivo en la sociedad.`,
     },
     {
       question: "¿Qué hago en mi tiempo libre?",
-      answer: `En mi tiempo libre, disfruto de tocar instrumentos musicales, practicar deportes y explorar nuevas tecnologías. Estas actividades no solo son un escape creativo, sino que también me ayudan a mantener una mente activa y siempre en búsqueda de nuevas ideas.`,
+      answer: `En mi tiempo libre, disfruto de tocar instrumentos musicales, practicar deportes, explorar nuevas tecnologías y pasar tiempo con los que más quiero. Estas actividades no solo son un escape creativo, sino que también me ayudan a mantener una mente activa y siempre en búsqueda de nuevas ideas.`,
     },
   ]
 

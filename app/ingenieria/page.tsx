@@ -29,9 +29,9 @@ export default function EngineeringPage() {
   ]
 
   const aprendizajesIngenieria = [
-    "Resolver",
+    "Eficiencia",
     "Profesionalismo",
-    "Análisis",
+    "Pensamiento Crítico",
     "Trabajo en Equipo",
     "Gestión del Tiempo",
   ]
@@ -79,19 +79,17 @@ export default function EngineeringPage() {
 
       <div className="relative z-10 rounded-lg bg-white bg-opacity-70 p-8 shadow-lg dark:bg-gray-900 dark:bg-opacity-70">
         <div className="mt-12">
-          <h1 className="mb-4 text-4xl font-bold">
-            Mi Trayectoria en Ingeniería
-          </h1>
+          <h1 className="mb-4 text-4xl font-bold">Ingeniería 💡</h1>
           <p className="mb-6">
             Desde joven siempre me gustaron los números y cultivé la curiosidad
             por crear y mejorar lo que ya existe. Estudiar Ingeniería de
-            Sistemas y Producción fueron la combinación perfecta para permitirme
-            liderar proyectos que integran tecnología e innovación para
-            optimizar procesos y generar un impacto significativo en las
-            empresas y en la sociedad.
+            Sistemas y Producción fue una pieza fundamental en mi trayectoria
+            como líder de proyectos, con ello he logrado integrar tecnología e
+            innovación para optimizar procesos y generar un impacto
+            significativo en las empresas y en la sociedad.
           </p>
           <p>
-            Entender las palabras <strong>impacato</strong> e{" "}
+            Entender las palabras <strong>impacto</strong> e{" "}
             <strong>ingenio</strong> son fundamentales para ser un buen
             ingeniero.
           </p>
@@ -101,12 +99,12 @@ export default function EngineeringPage() {
           />
           <Alert className="my-6">
             <Cpu className="size-4" />
-            <AlertTitle>Dato Curioso!</AlertTitle>
+            <AlertTitle>Dato Curioso</AlertTitle>
             <AlertDescription>
-              Hay gente que piensa que la ingeniería es para gente cuadriculada
-              y no para gente creativa. La realidad es que el ingenio es la
-              combinación perfecta entre estructura y creatividad, inspiración y
-              ejecución. Es un arte.
+              Muchos piensan que la ingeniería es para personalidades rígidas y
+              excluyente para las mentes creativas. La realidad es que el
+              ingenio es la combinación perfecta entre estructura y creatividad,
+              inspiración y ejecución. Es un arte.
             </AlertDescription>
           </Alert>
           <Blockquote>
