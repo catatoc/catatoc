@@ -112,7 +112,7 @@ export default function ProfilePage() {
                     width={150}
                     height={150}
                   />
-                  <span className="absolute right-0 top-0 z-50 text-2xl">
+                  <span className="absolute right-0 top-0 z-30 text-2xl">
                     🏅
                   </span>
                 </div>
