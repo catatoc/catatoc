@@ -8,6 +8,7 @@ import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 import { LoadingNav } from "./loading-nav"
+import { PreloaderThemeToggle } from "./theme-toggle-preloader"
 
 export function LoadingHeader() {
   return (
@@ -27,11 +28,11 @@ export function LoadingHeader() {
                   variant: "ghost",
                 })}
               >
-                <Linkedin className="hidden size-5 fill-current md:block" />
+                <Linkedin className="size-5 fill-current md:block" />
                 <span className="sr-only">LinkedIn</span>
               </div>
             </Link>
-            <ThemeToggle />
+            <PreloaderThemeToggle />
           </nav>
         </div>
       </div>
