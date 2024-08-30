@@ -1,3 +1,5 @@
+import dynamic from "next/dynamic"
+
 import "@/styles/globals.css"
 import { Metadata } from "next"
 
@@ -5,7 +7,6 @@ import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { BackButton } from "@/components/BackButton"
-import Cactus from "@/components/Cactus"
 import { ClientWrapper } from "@/components/ClientWrapper"
 import { Footer } from "@/components/Footer"
 import Chatbot from "@/components/faqs"
@@ -13,9 +14,10 @@ import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
-// Importa el BackButton
-
-// Importa el componente Cactus
+// Cargar dinámicamente el componente que usa Framer Motion
+const AnimatedMain = dynamic(() => import("@/components/AnimatedMain"), {
+  ssr: false, // Deshabilitar SSR para este componente
+})
 
 export const metadata: Metadata = {
   title: {
@@ -64,9 +66,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <ClientWrapper assets={assetsToLoad}>
               <div className="relative flex min-h-screen flex-col overflow-x-hidden">
                 <SiteHeader />
-                <main className="flex-1 px-4 mt-16">
-                  <BackButton className="" /> {children}
-                </main>
+                <AnimatedMain>
+                  <BackButton className="" />
+                  {children}
+                </AnimatedMain>
                 <TailwindIndicator />
                 <Chatbot />
               </div>

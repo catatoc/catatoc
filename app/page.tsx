@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import { listenNowAlbums, madeForYouAlbums } from "@/data/albums"
 import { playlists } from "@/data/playlists"
@@ -10,6 +11,7 @@ import { useCarousel } from "@/components/ui/carousel"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import AnimatedDiv from "@/components/AnimatedDiv"
 import { AlertsCarousel } from "@/components/CarouselAlert"
 import TechStackScroll from "@/components/TechStackScroll"
 import { AlbumArtwork } from "@/components/album-artwork"
@@ -45,7 +47,7 @@ export default function MusicPage() {
           className="hidden dark:block"
         />
       </div>
-      <div className="md:block">
+      <AnimatedDiv className="md:block">
         <div className="">
           <div className="bg-background">
             <AlertsCarousel />
@@ -75,7 +77,7 @@ export default function MusicPage() {
                           <h2 className="text-2xl font-semibold tracking-tight">
                             Galería
                           </h2>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="w-[90vw] text-sm text-muted-foreground">
                             A continuación encontrarás una galería de fotos que
                             me definen. Puedes encontrar más en las secciones de
                             Música, Deportes, Ingeniería y en mi Perfil.
@@ -114,7 +116,7 @@ export default function MusicPage() {
                           <h2 className="text-2xl font-semibold tracking-tight">
                             Tecnología
                           </h2>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-muted-foreground ">
                             Exploración de las tecnologías más recientes.
                           </p>
                         </div>
@@ -128,7 +130,7 @@ export default function MusicPage() {
             </div>
           </div>
         </div>
-      </div>
+      </AnimatedDiv>
     </>
   )
 }

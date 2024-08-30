@@ -51,6 +51,7 @@
     "dagre": "^0.8.5",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.2.0",
+    "framer-motion": "^11.3.31",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.105.0-alpha.4",
     "next": "^13.4.8",

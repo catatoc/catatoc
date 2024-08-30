@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import Image from "next/image"
+import { motion } from "framer-motion"
 import { XIcon } from "lucide-react"
 
 import {
@@ -20,6 +21,7 @@ import {
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { AlbumArtwork } from "@/components/album-artwork"
+import { fadeInAnimation } from "@/components/animations/fadeInAnimation"
 
 // Datos de logros
 const achievements = [
@@ -82,7 +84,7 @@ export default function ProfilePage() {
   )
 
   return (
-    <div className="px-4 py-6 lg:px-8">
+    <motion.div {...fadeInAnimation} className="px-4 py-6 lg:px-8">
       {/* Avatar y Nombre */}
       <div className="mb-8 text-center">
         <Image
@@ -105,8 +107,8 @@ export default function ProfilePage() {
         <h2 className="text-2xl font-semibold tracking-tight">Mis Logros</h2>
         <Separator className="my-4" />
         <div className="relative">
-          <ScrollArea className="flex w-96 gap-4 whitespace-nowrap rounded-md border p-4 md:w-full">
-            <div className="flex space-x-8">
+          <ScrollArea className="flex w-96 gap-4 whitespace-nowrap rounded-md border p-6 md:w-full">
+            <div className="flex space-x-12">
               {achievements.map((achievement) => (
                 <div
                   className="relative cursor-pointer"
@@ -416,6 +418,6 @@ export default function ProfilePage() {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   )
 }

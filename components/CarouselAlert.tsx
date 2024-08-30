@@ -42,6 +42,21 @@ export function AlertsCarousel() {
     }
   }, [])
 
+  useEffect(() => {
+    // Retrasar la animación 2 segundos después de montar
+    const timeout = setTimeout(() => {
+      if (carouselRef.current) {
+        carouselRef.current.classList.add("shake")
+        // Elimina la animación después de 0.5 segundos
+        setTimeout(() => {
+          if (carouselRef.current) carouselRef.current.classList.remove("shake")
+        }, 500)
+      }
+    }, 2000)
+
+    return () => clearTimeout(timeout)
+  }, [])
+
   const handleScrollLeft = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
@@ -85,7 +100,7 @@ export function AlertsCarousel() {
         }}
       >
         <CarouselContent className="flex w-full">
-          <CarouselItem className="w-full shrink-0">
+          <CarouselItem className="carousel-item w-full shrink-0">
             <Alert className="relative">
               <AlertTitle>👋🏼 ¡Hola!</AlertTitle>
               <AlertDescription className="relative">

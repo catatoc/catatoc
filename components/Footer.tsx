@@ -8,8 +8,7 @@ export function Footer() {
       <div className="container">
         <p className="text-sm text-muted-foreground">
           &copy; {new Date().getFullYear()} Carlos Horacio Carrasquero Quintini.{" "}
-          Elaborado en {new Date().getFullYear()} para el proceso de selección
-          de Empresas Polar 🇻🇪
+          Proceso de selección Empresas Polar 🇻🇪
         </p>
       </div>
     </footer>

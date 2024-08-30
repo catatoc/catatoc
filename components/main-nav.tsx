@@ -18,17 +18,30 @@ export function MainNav({ items }: MainNavProps) {
   const pathname = usePathname()
   const [showNotificationDot, setShowNotificationDot] = React.useState(false)
 
+  // Verificar si el usuario ha visitado la página /perfil
+  React.useEffect(() => {
+    const hasVisitedProfile = localStorage.getItem("hasVisitedProfile")
+
+    if (!hasVisitedProfile) {
+      // Si no ha visitado, mostrar el punto verde después de 10 segundos
+      const timer = setTimeout(() => {
+        setShowNotificationDot(true)
+      }, 10000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [])
+
+  // Guardar la visita cuando se acceda a la página /perfil
+  React.useEffect(() => {
+    if (pathname === "/perfil") {
+      localStorage.setItem("hasVisitedProfile", "true")
+      setShowNotificationDot(false) // Ocultar el punto verde si la página ha sido visitada
+    }
+  }, [pathname])
+
   // Determinar la ruta de destino
   const targetHref = pathname === "/" ? "/perfil" : "/perfil"
-
-  // Mostrar el punto verde después de 10 segundos
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowNotificationDot(true)
-    }, 10000)
-
-    return () => clearTimeout(timer)
-  }, [])
 
   return (
     <div className="flex gap-6 md:gap-10">
@@ -37,7 +50,7 @@ export function MainNav({ items }: MainNavProps) {
           <AvatarImage src="/profile.png" alt="@catatoc" />
           <AvatarFallback>CC</AvatarFallback>
           {showNotificationDot && (
-            <span className="absolute bottom-1 right-1 z-50 block size-2 animate-ping rounded-full bg-green-500"></span>
+            <span className="absolute bottom-1 right-1 z-50 block size-3 animate-ping rounded-full bg-green-300"></span>
           )}
         </Avatar>
         <span className="hidden font-bold md:inline-block">

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react"
 import Image from "next/image"
+import { motion } from "framer-motion"
 import { Lightbulb } from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -16,6 +17,7 @@ import {
 import Leaderboard from "@/components/ui/leaderboard"
 import { Blockquote, BlockquoteAuthor } from "@/components/ui/quote"
 import MusicSection from "@/components/MusicSection"
+import { fadeInAnimation } from "@/components/animations/fadeInAnimation"
 
 export default function MusicPage() {
   const valoresMusica = [
@@ -64,7 +66,7 @@ export default function MusicPage() {
   }, [selectedImage, handleKeyDown])
 
   return (
-    <div className="relative min-h-screen p-8">
+    <motion.div {...fadeInAnimation} className="relative min-h-screen p-8">
       <MusicSection />
 
       <div className="mt-12">
@@ -170,6 +172,6 @@ export default function MusicPage() {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   )
 }

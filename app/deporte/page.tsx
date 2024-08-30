@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react"
 import Image from "next/image"
+import { motion } from "framer-motion"
 import { Lightbulb } from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -16,6 +17,7 @@ import {
 import Leaderboard from "@/components/ui/leaderboard"
 import { Blockquote, BlockquoteAuthor } from "@/components/ui/quote"
 import FootballEntrance from "@/components/FootballEntrance"
+import { fadeInAnimation } from "@/components/animations/fadeInAnimation"
 
 export default function SportsPage() {
   const valoresDeporte = [
@@ -64,7 +66,7 @@ export default function SportsPage() {
   }, [selectedImage, handleKeyDown])
 
   return (
-    <div className="relative min-h-screen p-8">
+    <motion.div {...fadeInAnimation} className="relative min-h-screen p-8">
       <FootballEntrance />
 
       <div className="mt-12 flex flex-col">
@@ -168,6 +170,6 @@ export default function SportsPage() {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   )
 }

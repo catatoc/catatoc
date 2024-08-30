@@ -123,3 +123,23 @@
   background-color: white !important; /* Asegúrate de que el fondo se mantenga claro */
   color: black !important; /* Asegúrate de que el texto se mantenga oscuro */
 }
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+.shake {
+  animation: shake 0.5s ease;
+}

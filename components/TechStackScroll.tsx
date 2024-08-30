@@ -133,7 +133,7 @@ const ExperiencesScroll = () => {
       <div className="flex items-center justify-between">
         <div className="space-y-1">
           <h2 className="text-2xl font-semibold tracking-tight">Habilidades</h2>
-          <p className="text-sm text-muted-foreground">
+          <p className="w-[90vw] text-sm text-muted-foreground">
             Estas son las habilidades que he desarrollado a lo largo de mi
             carrera profesional.
           </p>

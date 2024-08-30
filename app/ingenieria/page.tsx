@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react"
 import Image from "next/image"
+import { motion } from "framer-motion"
 import { Cpu } from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -18,6 +19,7 @@ import { Blockquote, BlockquoteAuthor } from "@/components/ui/quote"
 import { Footer } from "@/components/Footer"
 import ParticlesBackground from "@/components/ParticlesBackground"
 import TechStack from "@/components/TechStack"
+import { fadeInAnimation } from "@/components/animations/fadeInAnimation"
 
 export default function EngineeringPage() {
   const valoresIngenieria = [
@@ -74,7 +76,10 @@ export default function EngineeringPage() {
   }, [selectedImage, handleKeyDown])
 
   return (
-    <div className="relative min-h-screen p-0 lg:p-8">
+    <motion.div
+      {...fadeInAnimation}
+      className="relative min-h-screen p-0 lg:p-8"
+    >
       <ParticlesBackground />
 
       <div className="relative z-10 rounded-lg bg-white bg-opacity-70 p-8 shadow-lg dark:bg-gray-900 dark:bg-opacity-70">
@@ -213,6 +218,6 @@ export default function EngineeringPage() {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   )
 }
