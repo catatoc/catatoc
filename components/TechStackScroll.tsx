@@ -135,7 +135,7 @@ const ExperiencesScroll = () => {
       </div>
       <Separator className="my-4" />
 
-      <ScrollArea className="whitespace-nowrap">
+      <ScrollArea className="w-96 whitespace-nowrap md:w-full">
         <div className="flex space-x-4 pb-4">
           {sortedExperiences.map((experience, index) => (
             <Card
