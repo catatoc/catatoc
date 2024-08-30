@@ -6,14 +6,14 @@ export function Sidebar({ className }: { className?: string }) {
   return (
     <div className={cn("relative pb-12", className)}>
       {/* Contenido del sidebar */}
-      <div className="sticky top-0 w-full max-w-xs flex flex-col gap-2 mt-4">
+      <div className="sticky top-0 mt-4 flex w-full max-w-xs flex-col gap-2">
         {/* Bienvenida */}
         <div className="px-4 py-2">
           <Alert>
-            <AlertTitle>👋🏼 Bienvenido a mi Sitio Web</AlertTitle>
+            <AlertTitle>👋🏼 ¡Hola!</AlertTitle>
             <AlertDescription>
-              Este es un espacio donde comparto mis conocimientos y experiencias
-              en el mundo de la tecnología y la programación.
+              Este es un espacio donde comparto una descripción sobre mí, mis
+              intereses, habilidades y pasiones.
             </AlertDescription>
           </Alert>
         </div>
@@ -27,7 +27,7 @@ export function Sidebar({ className }: { className?: string }) {
             <AlertDescription>
               Para conocer más sobre mi historia, valores y aspectos personales,
               visita mi perfil.
-              <a href="/perfil" className="underline ml-1">
+              <a href="/perfil" className="ml-1 underline">
                 Conoce más sobre mí
               </a>
               .
@@ -40,8 +40,7 @@ export function Sidebar({ className }: { className?: string }) {
           <Alert>
             <AlertTitle>🙋🏻 ¿Tienes Preguntas?</AlertTitle>
             <AlertDescription>
-              No olvides que hay un botón flotante en la parte inferior derecha
-              (
+              Hay un botón flotante en la parte inferior derecha (
               <span role="img" aria-label="message">
                 💬
               </span>

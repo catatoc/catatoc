@@ -21,24 +21,10 @@ const experiences: ExperienceItem[] = [
     level: "Avanzado",
   },
   {
-    emoji: "🌱",
-    name: "Sostenibilidad y Responsabilidad Ambiental",
-    description:
-      "Implementación de prácticas sostenibles en productos y servicios, garantizando un impacto positivo en el medio ambiente.",
-    level: "Avanzado",
-  },
-  {
     emoji: "⚡",
-    name: "Desarrollo Ágil de Proyectos",
+    name: "Desarrollo Ágil",
     description:
       "Aplicación de metodologías ágiles para mejorar la eficiencia en el desarrollo de proyectos y servicios.",
-    level: "Avanzado",
-  },
-  {
-    emoji: "🔍",
-    name: "Evaluación de Oportunidades de Mercado",
-    description:
-      "Identificación y análisis de nuevas áreas de mercado para la expansión de productos y servicios.",
     level: "Avanzado",
   },
   {
@@ -50,16 +36,23 @@ const experiences: ExperienceItem[] = [
   },
   {
     emoji: "🔄",
-    name: "Cultura de Mejora Continua",
+    name: "Mejora Continua",
     description:
       "Promoción y establecimiento de una cultura organizacional que desafíe constantemente el status quo.",
-    level: "Intermedio",
+    level: "Avanzado",
   },
   {
-    emoji: "❤️",
-    name: "Desarrollo de Estrategias de Bienestar",
+    emoji: "💰",
+    name: "Control de Gestión",
     description:
-      "Creación e implementación de estrategias que contribuyan al bienestar social y a la calidad de vida.",
+      "Gestión y control de recursos financieros para garantizar la sostenibilidad y rentabilidad de la organización.",
+    level: "Básico",
+  },
+  {
+    emoji: "🧐",
+    name: "Consultoría Estratégica",
+    description:
+      "Asesoramiento en la definición de estrategias de negocio que impulsen el crecimiento y la competitividad.",
     level: "Intermedio",
   },
   {
@@ -70,18 +63,46 @@ const experiences: ExperienceItem[] = [
     level: "Intermedio",
   },
   {
-    emoji: "🤝",
-    name: "Responsabilidad Social Corporativa (RSC)",
+    emoji: "🧪",
+    name: "Investigación y Desarrollo",
     description:
-      "Implementación de prácticas de RSC que integren responsabilidad social en la estrategia de negocio.",
+      "Contribución al desarrollo de nuevos productos a través de la investigación y la experimentación.",
+    level: "Intermedio",
+  },
+  {
+    emoji: "💻",
+    name: "Desarrollo de Software",
+    description:
+      "Desarrollo de aplicaciones y sistemas software siguiendo las mejores prácticas de ingeniería de software.",
+    level: "Avanzado",
+  },
+  {
+    emoji: "🎨",
+    name: "UI/UX",
+    description:
+      "Diseño de interfaces de usuario intuitivas y experiencia de usuario centrada en el cliente.",
     level: "Básico",
   },
   {
-    emoji: "🧪",
-    name: "Investigación y Desarrollo (I+D)",
+    emoji: "📈",
+    name: "Product Management",
     description:
-      "Contribución al desarrollo de nuevos productos a través de la investigación y la experimentación.",
-    level: "Básico",
+      "Gestión integral de productos, desde la concepción hasta el lanzamiento, alineando la visión del producto con los objetivos del negocio.",
+    level: "Avanzado",
+  },
+  {
+    emoji: "📚",
+    name: "Docencia",
+    description:
+      "Experiencia en la enseñanza y formación de estudiantes, desarrollando programas educativos efectivos y dinámicos.",
+    level: "Avanzado",
+  },
+  {
+    emoji: "🎤",
+    name: "Oratoria",
+    description:
+      "Habilidad para hablar en público con claridad y persuasión, capturando la atención y comunicando mensajes de manera efectiva.",
+    level: "Avanzado",
   },
 ]
 
@@ -92,33 +113,35 @@ const ExperiencesScroll = () => {
     return levels.indexOf(a.level) - levels.indexOf(b.level)
   })
 
-  // Calcular el ancho más amplio basado en el nombre de la experiencia más larga
-  const maxWidth =
-    sortedExperiences.reduce((max, experience) => {
-      return Math.max(max, experience.name.length)
-    }, 0) * 10 // multiplicamos por un factor para ajustar el ancho
+  // Calcular el ancho más amplio basado en el nombre de la experiencia más larga para cada nivel
+  const maxWidths = sortedExperiences.reduce((acc, experience) => {
+    const currentWidth = experience.name.length * 10 // Factor para ajustar el ancho
+    if (!acc[experience.level] || currentWidth > acc[experience.level]) {
+      acc[experience.level] = currentWidth
+    }
+    return acc
+  }, {} as Record<string, number>)
 
   return (
     <div className="relative mt-6">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h2 className="text-2xl font-semibold tracking-tight">
-            Experiencias
-          </h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Habilidades</h2>
           <p className="text-sm text-muted-foreground">
-            Aquí puedes encontrar las experiencias que he desarrollado.
+            Estas son las habilidades que he desarrollado a lo largo de mi
+            carrera profesional.
           </p>
         </div>
       </div>
       <Separator className="my-4" />
 
-      <ScrollArea className="w-96 whitespace-nowrap md:w-full">
+      <ScrollArea className="whitespace-nowrap">
         <div className="flex space-x-4 pb-4">
           {sortedExperiences.map((experience, index) => (
             <Card
               key={index}
               className="shrink-0 transition-shadow hover:shadow-lg"
-              style={{ width: `${maxWidth}px` }} // Aplicar el ancho calculado
+              style={{ width: `${maxWidths[experience.level]}px` }} // Aplicar el ancho calculado para cada nivel
             >
               <CardHeader>
                 <CardTitle className="text-center text-2xl">

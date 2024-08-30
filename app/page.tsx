@@ -20,7 +20,7 @@ import EmojiConfetti from "@/components/triggerConfetti"
 
 export const metadata: Metadata = {
   title: "Carlos Horacio Carrasquero",
-  description: "Sobre mi.",
+  description: "Sobre mí.",
 }
 
 export default function MusicPage() {
@@ -72,10 +72,12 @@ export default function MusicPage() {
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
                           <h2 className="text-2xl font-semibold tracking-tight">
-                            Información general
+                            Sobre mí
                           </h2>
                           <p className="text-sm text-muted-foreground">
-                            Conoce más sobre Carlos Horacio Carrasquero.
+                            A continuación encontrarás algunas fotos que me
+                            definen. Puedes encontrar más en las secciones de
+                            Música, Deportes, Ingeniería y en mi Perfil.
                           </p>
                         </div>
                       </div>

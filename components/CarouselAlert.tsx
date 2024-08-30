@@ -63,24 +63,24 @@ export function AlertsCarousel() {
   }
 
   return (
-    <div className="relative w-full mt-7 lg:hidden">
+    <div className="relative mt-7 w-full lg:hidden">
       {/* Close button */}
       <button
-        className="absolute top-2 right-2 z-10 p-1 bg-white rounded-full shadow-md hover:bg-gray-100"
+        className="absolute right-2 top-2 z-10 rounded-full bg-white p-1 shadow-md hover:bg-gray-100"
         onClick={() => setIsVisible(false)}
         aria-label="Cerrar carrusel"
       >
-        <XIcon className="h-4 w-4 text-gray-600" />
+        <XIcon className="size-4 text-gray-600" />
       </button>
 
       <Carousel className="w-full overflow-hidden" ref={carouselRef}>
         <CarouselContent className="flex w-full">
           <CarouselItem className="w-full shrink-0">
             <Alert>
-              <AlertTitle>👋🏼 Bienvenido a mi Sitio Web</AlertTitle>
+              <AlertTitle>👋🏼 ¡Hola!</AlertTitle>
               <AlertDescription>
-                Este es un espacio donde comparto mis conocimientos y
-                experiencias en el mundo de la tecnología y la programación.
+                Este es un espacio donde comparto una descripción sobre mí, mis
+                intereses, habilidades y pasiones.
               </AlertDescription>
             </Alert>
           </CarouselItem>
@@ -91,7 +91,7 @@ export function AlertsCarousel() {
               <AlertDescription>
                 Para conocer más sobre mi historia, valores y aspectos
                 personales, visita mi perfil.
-                <a href="/perfil" className="underline ml-1">
+                <a href="/perfil" className="ml-1 underline">
                   Conoce más sobre mí
                 </a>
                 .
@@ -103,8 +103,7 @@ export function AlertsCarousel() {
             <Alert>
               <AlertTitle>🙋🏻 ¿Tienes Preguntas?</AlertTitle>
               <AlertDescription>
-                No olvides que hay un botón flotante en la parte inferior
-                derecha (
+                Hay un botón flotante en la parte inferior derecha (
                 <span role="img" aria-label="message">
                   💬
                 </span>

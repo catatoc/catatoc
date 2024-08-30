@@ -14,7 +14,7 @@ const techStack: TechItem[] = [
     emoji: "🟦",
     name: "SAP",
     description: "ERP empresarial líder.",
-    level: "Avanzado",
+    level: "Intermedio",
   },
   {
     emoji: "🔧",
@@ -26,7 +26,7 @@ const techStack: TechItem[] = [
     emoji: "💻",
     name: "Python",
     description: "Lenguaje de programación versátil.",
-    level: "Avanzado",
+    level: "Intermedio",
   },
   {
     emoji: "🌐",
@@ -50,7 +50,7 @@ const techStack: TechItem[] = [
     emoji: "🗂",
     name: "Notion",
     description: "Gestión de notas y tareas.",
-    level: "Intermedio",
+    level: "Avanzado",
   },
   {
     emoji: "🖥️",
@@ -86,13 +86,13 @@ const techStack: TechItem[] = [
     emoji: "📎",
     name: "Google Workspace",
     description: "Suite de productividad empresarial.",
-    level: "Intermedio",
+    level: "Avanzado",
   },
   {
     emoji: "💬",
     name: "Lark",
     description: "Colaboración y comunicación.",
-    level: "Básico",
+    level: "Avanzado",
   },
   {
     emoji: "🎥",
@@ -112,6 +112,24 @@ const techStack: TechItem[] = [
     description: "Minería de procesos.",
     level: "Básico",
   },
+  {
+    emoji: "📊",
+    name: "Microsoft Project",
+    description: "Gestión de proyectos y planificación.",
+    level: "Intermedio",
+  },
+  {
+    emoji: "🔎",
+    name: "Lucidchart",
+    description: "Diagramación y diseño de flujos de trabajo.",
+    level: "Avanzado",
+  },
+  {
+    emoji: "➡️",
+    name: "Microsoft Visio",
+    description: "Creación de diagramas y modelado visual.",
+    level: "Avanzado",
+  },
 ]
 
 const TechStackGallery = () => {
@@ -124,7 +142,7 @@ const TechStackGallery = () => {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {sortedTechStack.map((tech, index) => (
-        <Card key={index} className="hover:shadow-lg transition-shadow">
+        <Card key={index} className="transition-shadow hover:shadow-lg">
           <CardHeader>
             <CardTitle className="text-center text-4xl">{tech.emoji}</CardTitle>
           </CardHeader>
@@ -133,14 +151,14 @@ const TechStackGallery = () => {
             <p className="text-sm text-muted-foreground">{tech.description}</p>
             <div className="mt-4">
               <p className="text-xs text-muted-foreground">{tech.level}</p>
-              <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+              <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200">
                 <div
                   className={`h-full ${
                     tech.level === "Avanzado"
-                      ? "bg-green-500 w-3/4"
+                      ? "w-3/4 bg-green-500"
                       : tech.level === "Intermedio"
-                      ? "bg-blue-400 w-1/2"
-                      : "bg-yellow-500 w-1/4"
+                      ? "w-1/2 bg-blue-400"
+                      : "w-1/4 bg-yellow-500"
                   }`}
                 ></div>
               </div>

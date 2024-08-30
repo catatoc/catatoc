@@ -68,7 +68,7 @@ export default function MusicPage() {
       <MusicSection />
 
       <div className="mt-12">
-        <h1 className="mb-4 text-4xl font-bold">Mi Viaje Musical</h1>
+        <h1 className="mb-4 text-4xl font-bold">Música</h1>
         <p className="mb-6">
           Comencé con el piano a los 15 en festivales escolares y seguí
           explorando la música con Gerry Weil, el jazz, y la producción
@@ -79,16 +79,18 @@ export default function MusicPage() {
 
         <Alert variant="success" className="my-6">
           <Lightbulb className="size-4" />
-          <AlertTitle>Consejo!</AlertTitle>
+          <AlertTitle>De lo más importante</AlertTitle>
           <AlertDescription>
-            Puedes agregar componentes a tu app usando la CLI.
+            La música da mucha paciencia, perseverancia, trabajo duro y aprender
+            a improvisar. Si te equivocas en una nota, tienes que seguir y
+            resolver en el camino para que el oyente no pierda la magia de la
+            experiencia.
           </AlertDescription>
         </Alert>
 
         <Blockquote>
-          La música es una ley moral. Da alma al universo, alas a la mente, y
-          vida a todo.
-          <BlockquoteAuthor>Platón</BlockquoteAuthor>
+          El gesto de amor más auténtico es la música.
+          <BlockquoteAuthor>Gerry Weil</BlockquoteAuthor>
         </Blockquote>
 
         <div className="mt-12">
@@ -100,7 +102,7 @@ export default function MusicPage() {
           </p>
 
           {/* Carrusel con Auto Loop, Drag y Click */}
-          <h2 className="mb-4 text-3xl font-bold">Galería de Fotos</h2>
+          <h2 className="mb-4 text-3xl font-bold">Algunas fotos</h2>
           <Carousel
             className="mx-auto w-full max-w-3xl"
             opts={{

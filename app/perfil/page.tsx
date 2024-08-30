@@ -48,6 +48,11 @@ const achievements = [
     cover: "/images/achievements/achievement5.png",
     artist: "FCE UNIMET",
   },
+  {
+    name: "Beca Académica",
+    cover: "/images/achievements/achievement6.png",
+    artist: "UNIMET",
+  },
 ]
 
 const familyPhotos = [
@@ -125,7 +130,7 @@ export default function ProfilePage() {
       </div>
 
       {/* Secciones con Acordeones */}
-      <Accordion type="single" collapsible>
+      <Accordion type="multiple">
         {/* Sección: Familia */}
         <AccordionItem value="family">
           <AccordionTrigger className="text-2xl font-semibold tracking-tight">
@@ -136,20 +141,19 @@ export default function ProfilePage() {
               <div>
                 <p className="text-lg">
                   Mi familia es <strong>mi mayor fortaleza</strong>. Somos una
-                  familia <strong>numerosa y unida</strong>, con{" "}
-                  <strong>raíces profundamente venezolanas</strong> que han
-                  moldeado mis valores y mi forma de ver la vida. Desde pequeño,
-                  aprendí la importancia de la{" "}
+                  familia <strong>numerosa y unida</strong> que han moldeado mis
+                  valores y mi forma de ver la vida. Desde pequeño, aprendí la
+                  importancia de la{" "}
                   <strong>solidaridad, el respeto y el amor</strong> hacia los
                   demás. Estos valores, inculcados por mi familia, han sido
                   fundamentales en mi crecimiento personal y profesional.
                 </p>
                 <p className="mt-4 text-lg">
-                  Cada reunión familiar es un recordatorio de nuestras
-                  tradiciones y del vínculo inquebrantable que nos une. La{" "}
-                  <strong>alegría y el calor humano</strong> son parte esencial
-                  de nuestras vidas, algo que valoro enormemente y que me
-                  esfuerzo por transmitir en cada aspecto de mi vida.
+                  Cada reunión familiar es un recordatorio de lo que somos y de
+                  donde venimos. La{" "}
+                  <strong>alegría y el calor humano (y venezolano)</strong> son
+                  parte esencial de nuestras vidas, algo que valoro enormemente
+                  y que me esfuerzo por transmitir en cada aspecto de mi vida.
                 </p>
               </div>
 
@@ -196,26 +200,20 @@ export default function ProfilePage() {
               <div>
                 <h3 className="text-xl font-semibold">🇻🇪 Venezuela</h3>
                 <p className="mt-2 text-lg">
-                  Venezuela es mi país natal, un lugar que amo profundamente. La
-                  riqueza de su cultura, la calidez de su gente y la belleza de
-                  sus paisajes naturales han sido fundamentales en mi vida.
-                  Crecer en Venezuela me ha permitido valorar la{" "}
-                  <strong>diversidad cultural</strong>, la{" "}
-                  <strong>alegría de su gente</strong> y el{" "}
-                  <strong>orgullo de nuestras tradiciones</strong>.
-                </p>
-                <p className="mt-4 text-lg">
-                  Aunque actualmente vivo en otro país, siempre llevo a
-                  Venezuela en mi corazón. Su cultura vibrante y su historia
-                  única son una fuente constante de inspiración y fortaleza en
-                  mi vida diaria.
+                  Es sin duda un país especial. Aquí crecí y aprendí la
+                  importancia de ser feliz sin importar los obstáculos. Un país
+                  que me lo ha dado todo y que me ha dado los mejores amigos,
+                  familia, pareja. La riqueza de su cultura, la calidez de la
+                  gente y la belleza de sus paisajes naturales hacen de Caracas
+                  y Venezuela un hogar único.
                 </p>
 
                 <h3 className="mt-8 text-xl font-semibold">🇨🇦 Canadá</h3>
                 <p className="mt-2 text-lg">
                   Viví en Canadá durante un año, una experiencia que me permitió
                   no solo aprender inglés, sino también sumergirme en una
-                  cultura rica y diversa. Canadá es un país que valora la{" "}
+                  cultura muy amplia donde tuve que poner al máximo mis
+                  habilidades. Canadá es un país que valora la{" "}
                   <strong>inclusión</strong>, la <strong>diversidad</strong> y
                   la <strong>convivencia pacífica</strong> entre personas de
                   diferentes orígenes.
@@ -223,8 +221,7 @@ export default function ProfilePage() {
                 <p className="mt-4 text-lg">
                   La experiencia canadiense me enseñó a apreciar diferentes
                   perspectivas culturales y me ayudó a crecer tanto personal
-                  como profesionalmente. Fue un año de descubrimientos y
-                  aprendizajes que me dejó recuerdos imborrables.
+                  como profesionalmente.
                 </p>
               </div>
 
@@ -269,18 +266,19 @@ export default function ProfilePage() {
           <AccordionContent>
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               <div>
-                <h3 className="text-xl font-semibold">
-                  Mi Estilo de Liderazgo
-                </h3>
                 <p className="mt-2 text-lg">
                   Mi experiencia en liderazgo se basa en{" "}
                   <strong>tomar decisiones estratégicas</strong>,{" "}
-                  <strong>guiar equipos hacia la innovación</strong>, y{" "}
+                  <strong>
+                    guiar equipos a creer en ellos, probar cosas nuevas
+                  </strong>
+                  , y{" "}
                   <strong>
                     facilitar el crecimiento personal y profesional
                   </strong>{" "}
-                  de aquellos a mi alrededor. He liderado equipos en distintos
-                  contextos, desde el ámbito empresarial hasta el educativo.
+                  de aquellos a mi alrededor. Siempre apuntando a la excelencia
+                  he liderado equipos en distintos contextos, desde el ámbito
+                  empresarial hasta el educativo.
                 </p>
                 <p className="mt-4 text-lg">
                   Como <strong>profesor universitario</strong>,{" "}
@@ -337,9 +335,6 @@ export default function ProfilePage() {
           <AccordionContent>
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               <div>
-                <h3 className="text-xl font-semibold">
-                  Compañerismo, Amor por lo que Hago y Ayudar a los Demás
-                </h3>
                 <p className="mt-2 text-lg">
                   El <strong>compañerismo</strong> ha sido fundamental en cada
                   equipo y proyecto en el que he participado. Valoro

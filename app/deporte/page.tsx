@@ -68,29 +68,28 @@ export default function SportsPage() {
       <FootballEntrance />
 
       <div className="mt-12 flex flex-col">
-        <h1 className="mb-4 text-4xl font-bold">Mi Trayectoria Deportiva</h1>
+        <h1 className="mb-4 text-4xl font-bold">Deporte</h1>
         <p className="mb-6">
-          Desde temprana edad, el deporte ha sido una parte fundamental de mi
-          vida. He aprendido valores como el trabajo en equipo, la disciplina, y
-          la perseverancia a través de múltiples disciplinas, incluyendo fútbol,
-          baloncesto, y atletismo.
+          El deporte siempre ha estado presente en mi vida. He aprendido valores
+          como el trabajo en equipo, la disciplina, y la perseverancia a través
+          de múltiples disciplinas, incluyendo fútbol, basket, tenis y pádel.
         </p>
 
         <Leaderboard title="Valores en el Deporte" values={valoresDeporte} />
 
         <Alert variant="success" className="my-6">
           <Lightbulb className="size-4" />
-          <AlertTitle>Dato Curioso!</AlertTitle>
+          <AlertTitle>De lo más importante</AlertTitle>
           <AlertDescription>
-            El deporte no solo mejora la salud física, sino que también es clave
-            para el desarrollo de habilidades sociales y de liderazgo.
+            El deporte enseña respeto al rival, sana competencia, el poder de la
+            mente, aprender a ganar y aprender a perder.
           </AlertDescription>
         </Alert>
 
         <Blockquote>
-          El deporte tiene el poder de cambiar el mundo. Tiene el poder de
-          inspirar, de unir a las personas como pocas otras cosas.
-          <BlockquoteAuthor>Nelson Mandela</BlockquoteAuthor>
+          No quiero ser una estrella. Prefiero ser un buen ejemplo para los
+          niños.
+          <BlockquoteAuthor>Zinedine Zidane</BlockquoteAuthor>
         </Blockquote>
 
         <div className="mt-12">
@@ -102,7 +101,7 @@ export default function SportsPage() {
           </p>
 
           {/* Carrusel con Auto Loop, Drag y Click */}
-          <h2 className="mb-4 text-3xl font-bold">Galería de Fotos</h2>
+          <h2 className="mb-4 text-3xl font-bold">Algunas fotos</h2>
           <Carousel
             className="mx-auto w-full max-w-3xl"
             opts={{

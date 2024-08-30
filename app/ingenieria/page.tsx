@@ -22,16 +22,16 @@ import TechStack from "@/components/TechStack"
 export default function EngineeringPage() {
   const valoresIngenieria = [
     "Innovación",
-    "Optimización de Procesos",
-    "Transformación Digital",
+    "Optimización",
+    "Transformación",
     "Liderazgo",
     "Creatividad",
   ]
 
   const aprendizajesIngenieria = [
-    "Resolución de Problemas",
+    "Resolver",
     "Profesionalismo",
-    "Capacidad de Análisis",
+    "Análisis",
     "Trabajo en Equipo",
     "Gestión del Tiempo",
   ]
@@ -77,38 +77,43 @@ export default function EngineeringPage() {
     <div className="relative min-h-screen p-0 lg:p-8">
       <ParticlesBackground />
 
-      <div className="relative z-10 bg-white dark:bg-gray-900 dark:bg-opacity-70 bg-opacity-70 p-8 rounded-lg shadow-lg">
+      <div className="relative z-10 rounded-lg bg-white bg-opacity-70 p-8 shadow-lg dark:bg-gray-900 dark:bg-opacity-70">
         <div className="mt-12">
           <h1 className="mb-4 text-4xl font-bold">
             Mi Trayectoria en Ingeniería
           </h1>
           <p className="mb-6">
-            Con una sólida formación en Ingeniería de Sistemas y Producción, he
-            liderado proyectos que integran la tecnología y la innovación para
+            Desde joven siempre me gustaron los números y cultivé la curiosidad
+            por crear y mejorar lo que ya existe. Estudiar Ingeniería de
+            Sistemas y Producción fueron la combinación perfecta para permitirme
+            liderar proyectos que integran tecnología e innovación para
             optimizar procesos y generar un impacto significativo en las
-            empresas en las que he trabajado.
+            empresas y en la sociedad.
           </p>
-
+          <p>
+            Entender las palabras <strong>impacato</strong> e{" "}
+            <strong>ingenio</strong> son fundamentales para ser un buen
+            ingeniero.
+          </p>
           <Leaderboard
             title="Valores en Ingeniería"
             values={valoresIngenieria}
           />
-
           <Alert className="my-6">
             <Cpu className="size-4" />
             <AlertTitle>Dato Curioso!</AlertTitle>
             <AlertDescription>
-              En mi rol actual, estoy impulsando la integración de AI y ChatGPT
-              en procesos empresariales para mejorar la eficiencia.
+              Hay gente que piensa que la ingeniería es para gente cuadriculada
+              y no para gente creativa. La realidad es que el ingenio es la
+              combinación perfecta entre estructura y creatividad, inspiración y
+              ejecución. Es un arte.
             </AlertDescription>
           </Alert>
-
           <Blockquote>
             La ingeniería es el arte de dirigir los grandes recursos de poder de
             la naturaleza para el uso y conveniencia del hombre.
             <BlockquoteAuthor>Thomas Tredgold</BlockquoteAuthor>
           </Blockquote>
-
           <div className="mt-12">
             <h2 className="mb-4 text-3xl font-bold">Cosas que He Aprendido</h2>
             <p className="mb-4">
@@ -122,19 +127,15 @@ export default function EngineeringPage() {
               values={aprendizajesIngenieria}
             />
           </div>
-
           <div className="mt-12">
             <h2 className="mb-4 text-3xl font-bold">Proyectos Destacados</h2>
             <p className="mb-4">
               A lo largo de mi carrera, he trabajado en una variedad de
-              proyectos que abarcan desde la gestión integral de soluciones de
-              software hasta la optimización de cadenas de suministro en
-              empresas multinacionales. Aquí te presento algunos de los más
-              importantes.
+              proyectos. Aquí te presento algunos de los más importantes.
             </p>
 
             {/* Carrusel con Auto Loop, Drag y Click */}
-            <h2 className="mb-4 text-3xl font-bold">Galería de Proyectos</h2>
+            <h2 className="mb-4 text-3xl font-bold">Fotos</h2>
             <Carousel
               className="mx-auto w-full max-w-3xl"
               opts={{

@@ -6,24 +6,19 @@ export interface Album {
 
 export const listenNowAlbums: Album[] = [
   {
-    name: "Fútbol",
-    artist: "Provinciales de British Columbia",
-    cover: "/images/sports/soccer.png",
-  },
-  {
     name: "Esfuerzo Académico",
     artist: "Ingeniería de Producción y Sistemas",
     cover: "/images/academic/tesis.png",
   },
   {
-    name: "Pasion por el Arte",
-    artist: "Jazz en Concreto",
+    name: "Música",
+    artist: "Bandas musicales, grupos artísticos",
     cover: "/images/music/esquina.png",
   },
   {
     name: "Liderazgo",
-    artist: "Centro de Estudiantes, Docencia",
-    cover: "/images/people/cono.png",
+    artist: "Docencia, Centro de Estudiantes, Equipos",
+    cover: "/images/people/people3.png",
   },
   {
     name: "Familia",
@@ -31,9 +26,24 @@ export const listenNowAlbums: Album[] = [
     cover: "/images/family/royale.png",
   },
   {
-    name: "Música",
-    artist: "Beth Binary",
+    name: "Deporte",
+    artist: "Representando a 🇻🇪 en 🇪🇸",
+    cover: "/images/sports/sport13.png",
+  },
+  {
+    name: "Atención al detalle",
+    artist: "Pasión por la Excelencia",
     cover: "/images/music/koga.png",
+  },
+  {
+    name: "Ingenio",
+    artist: "Nuevos Productos",
+    cover: "/images/leadership/leadership2.png",
+  },
+  {
+    name: "Impacto",
+    artist: "Influencia positiva",
+    cover: "/images/leadership/leadership1.png",
   },
   {
     name: "Tecnología",

@@ -8,7 +8,7 @@ interface LeaderboardProps {
   values: string[]
 }
 
-const emojiList = ["🥇", "🥈", "🥉", "🎖️", "🏅"]
+const emojiList = ["🏅", "🏅", "🏅", "🏅", "🏅"]
 
 const Leaderboard = ({ title, values }: LeaderboardProps) => {
   return (
