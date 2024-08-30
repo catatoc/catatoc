@@ -1,9 +1,8 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -60,15 +59,8 @@ const achievements = [
   },
 ]
 
-const familyPhotos = [
-  "/images/foto1.jpg",
-  "/images/foto2.jpg",
-  // Añade más fotos según sea necesario
-]
-
 export default function ProfilePage() {
   const [selectedAchievement, setSelectedAchievement] = useState<any>(null)
-  const [isVideoVisible, setIsVideoVisible] = useState(true)
 
   const familyPhotos = Array.from({ length: 12 }).map(
     (_, index) => `/images/family/family${index + 1}.webp`
@@ -111,7 +103,7 @@ export default function ProfilePage() {
                 <div
                   className="relative cursor-pointer"
                   key={achievement.name}
-                  onClick={() => setSelectedAchievement(achievement)}
+                  onClick={() => setSelectedAchievement(achievement)} // Maneja el clic para abrir el modal
                 >
                   <AlbumArtwork
                     album={achievement}
@@ -168,7 +160,15 @@ export default function ProfilePage() {
                         key={index}
                         className="shrink-0 basis-full pl-4 sm:basis-1/3"
                       >
-                        <div className="p-1">
+                        <div
+                          className="p-1"
+                          onClick={() =>
+                            setSelectedAchievement({
+                              cover: src,
+                              artist: "Familia",
+                            })
+                          }
+                        >
                           <Card>
                             <CardContent className="flex aspect-square items-center justify-center p-6">
                               <ImageWSkeleton
@@ -239,7 +239,15 @@ export default function ProfilePage() {
                         key={index}
                         className="shrink-0 basis-full pl-4 sm:basis-1/3"
                       >
-                        <div className="p-1">
+                        <div
+                          className="p-1"
+                          onClick={() =>
+                            setSelectedAchievement({
+                              cover: src,
+                              artist: "Cultura",
+                            })
+                          }
+                        >
                           <Card>
                             <CardContent className="flex aspect-square items-center justify-center p-6">
                               <ImageWSkeleton
@@ -310,7 +318,15 @@ export default function ProfilePage() {
                         key={index}
                         className="shrink-0 basis-full pl-4 sm:basis-1/3"
                       >
-                        <div className="p-1">
+                        <div
+                          className="p-1"
+                          onClick={() =>
+                            setSelectedAchievement({
+                              cover: src,
+                              artist: "Liderazgo",
+                            })
+                          }
+                        >
                           <Card>
                             <CardContent className="flex aspect-square items-center justify-center p-6">
                               <ImageWSkeleton
@@ -375,7 +391,15 @@ export default function ProfilePage() {
                         key={index}
                         className="shrink-0 basis-full pl-4 sm:basis-1/3"
                       >
-                        <div className="p-1">
+                        <div
+                          className="p-1"
+                          onClick={() =>
+                            setSelectedAchievement({
+                              cover: src,
+                              artist: "Impacto",
+                            })
+                          }
+                        >
                           <Card>
                             <CardContent className="flex aspect-square items-center justify-center p-6">
                               <ImageWSkeleton
