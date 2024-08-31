@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Link from "next/link"
 import { ChevronLeft, ChevronRight, XIcon } from "lucide-react"
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
@@ -117,9 +118,9 @@ export function AlertsCarousel() {
               <AlertDescription className="relative">
                 Para conocer más sobre mi historia, valores y aspectos
                 personales, visita mi perfil.
-                <a href="/perfil" className="ml-1 underline">
+                <Link href="/perfil" className="ml-1 underline">
                   Conoce más sobre mí.
-                </a>
+                </Link>
               </AlertDescription>
               <p className="absolute bottom-0.5 right-2 w-fit">👉🏼</p>
             </Alert>
