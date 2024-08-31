@@ -20,7 +20,11 @@ export const ClientWrapper = ({ children, assets }: ClientWrapperProps) => {
   return (
     <>
       {!loaded && (
-        <Preloader assets={assets} onLoaded={() => setLoaded(true)} />
+        <Preloader
+          assets={assets}
+          onLoaded={() => setLoaded(true)}
+          timeout={10000}
+        />
       )}
       {loaded && children}
     </>

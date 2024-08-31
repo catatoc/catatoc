@@ -31,7 +31,7 @@ interface PreloaderProps {
   timeout?: number // Opcional: timeout para la carga de cada asset
 }
 
-const Preloader = ({ assets, onLoaded, timeout = 5000 }: PreloaderProps) => {
+const Preloader = ({ assets, onLoaded, timeout = 10000 }: PreloaderProps) => {
   const [progress, setProgress] = useState(0)
   const [currentEmoji, setCurrentEmoji] = useState(emojis[0])
 
@@ -39,19 +39,23 @@ const Preloader = ({ assets, onLoaded, timeout = 5000 }: PreloaderProps) => {
     const totalAssets = assets.length
     let loadedAssets = 0
 
-    const updateProgress = () => {
+    const updateProgress = (asset: Asset, status: string) => {
       loadedAssets += 1
       setProgress(Math.round((loadedAssets / totalAssets) * 100))
+      console.log(`Asset loaded: ${asset.src}, Status: ${status}`)
       if (loadedAssets === totalAssets) {
+        console.log("All assets loaded or timed out.")
         onLoaded() // Notifica que la carga ha terminado
       }
     }
 
     const loadAsset = (asset: Asset) => {
+      console.log(`Starting to load asset: ${asset.src}`)
       return new Promise<void>((resolve) => {
         let timer = setTimeout(() => {
+          console.warn(`Asset timed out: ${asset.src}`)
           resolve()
-          updateProgress()
+          updateProgress(asset, "timeout")
         }, timeout) // Timeout configurable para evitar atascos
 
         switch (asset.type) {
@@ -60,13 +64,15 @@ const Preloader = ({ assets, onLoaded, timeout = 5000 }: PreloaderProps) => {
             img.src = asset.src
             img.onload = () => {
               clearTimeout(timer)
+              console.log(`Loaded image: ${asset.src}`)
               resolve()
-              updateProgress()
+              updateProgress(asset, "loaded")
             }
             img.onerror = () => {
               clearTimeout(timer)
+              console.error(`Failed to load image: ${asset.src}`)
               resolve()
-              updateProgress()
+              updateProgress(asset, "error")
             }
             break
           case "video":
@@ -75,13 +81,15 @@ const Preloader = ({ assets, onLoaded, timeout = 5000 }: PreloaderProps) => {
             video.preload = "auto"
             video.onloadeddata = () => {
               clearTimeout(timer)
+              console.log(`Loaded video: ${asset.src}`)
               resolve()
-              updateProgress()
+              updateProgress(asset, "loaded")
             }
             video.onerror = () => {
               clearTimeout(timer)
+              console.error(`Failed to load video: ${asset.src}`)
               resolve()
-              updateProgress()
+              updateProgress(asset, "error")
             }
             break
           case "audio":
@@ -90,20 +98,22 @@ const Preloader = ({ assets, onLoaded, timeout = 5000 }: PreloaderProps) => {
             audio.preload = "auto"
             audio.oncanplaythrough = () => {
               clearTimeout(timer)
+              console.log(`Loaded audio: ${asset.src}`)
               resolve()
-              updateProgress()
+              updateProgress(asset, "loaded")
             }
             audio.onerror = () => {
               clearTimeout(timer)
+              console.error(`Failed to load audio: ${asset.src}`)
               resolve()
-              updateProgress()
+              updateProgress(asset, "error")
             }
             break
           default:
-            // En caso de tipo no soportado
             clearTimeout(timer)
+            console.warn(`Unsupported asset type: ${asset.src}`)
             resolve()
-            updateProgress()
+            updateProgress(asset, "unsupported")
         }
       })
     }
@@ -130,8 +140,7 @@ const Preloader = ({ assets, onLoaded, timeout = 5000 }: PreloaderProps) => {
       <div className="text-center">
         <div className="mb-4 text-lg font-semibold text-white">{progress}%</div>
         <Progress value={progress} className="h-2 w-64" />
-        <div className="mt-4 text-3xl">{currentEmoji}</div>{" "}
-        {/* Emoji que cambia */}
+        <div className="mt-4 text-3xl">{currentEmoji}</div>
       </div>
     </div>
   )
