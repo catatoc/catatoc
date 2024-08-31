@@ -11,14 +11,14 @@ export const listenNowAlbums: Album[] = [
     cover: "/images/academic/tesis.webp",
   },
   {
-    name: "Música",
-    artist: "Disciplina, Creatividad, Escucha activa",
-    cover: "/images/music/esquina.webp",
-  },
-  {
     name: "Liderazgo",
     artist: "Proactividad, Estrategia, Comunicación",
     cover: "/images/people/people3.webp",
+  },
+  {
+    name: "Música",
+    artist: "Disciplina, Creatividad, Escucha activa",
+    cover: "/images/music/esquina.webp",
   },
   {
     name: "Deporte",
