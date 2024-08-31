@@ -9,6 +9,19 @@ import { Card } from "./ui/card"
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false)
 
+  // Open the chatbot automatically after 10 seconds only if it hasn't been opened before
+  useEffect(() => {
+    const hasOpened = localStorage.getItem("hasOpened")
+    if (!hasOpened) {
+      const timer = setTimeout(() => {
+        setIsOpen(true)
+        localStorage.setItem("hasOpened", "true")
+      }, 10000) // 10 seconds
+
+      return () => clearTimeout(timer)
+    }
+  }, [])
+
   return (
     <div
       style={{ position: "fixed", bottom: "20px", right: "20px", zIndex: 1000 }}
@@ -64,11 +77,10 @@ function FAQChat() {
     setChat((prev) => [...prev, { type: "question", content: faq.question }])
     setTyping(true)
 
-    // Simular un retraso para la respuesta
     setTimeout(() => {
       setTyping(false)
       simulateTyping(faq.answer)
-    }, 1000)
+    }, 1000) // Delay for the response simulation
   }
 
   const simulateTyping = (answer: string) => {
@@ -90,10 +102,9 @@ function FAQChat() {
       } else {
         clearInterval(interval)
       }
-    }, 50) // Velocidad de escritura
+    }, 30) // Increased typing speed
   }
 
-  // Efecto para hacer scroll hasta el final del chat cada vez que se actualiza
   useEffect(() => {
     if (chatEndRef.current) {
       chatEndRef.current.scrollIntoView({ behavior: "smooth" })
@@ -147,7 +158,7 @@ function FAQChat() {
           </div>
         )}
 
-        {/* Este div invisible es para hacer scroll hacia el final */}
+        {/* This invisible div is for auto-scrolling to the end */}
         <div ref={chatEndRef} />
       </div>
     </div>

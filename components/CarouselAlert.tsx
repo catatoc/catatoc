@@ -82,14 +82,6 @@ export function AlertsCarousel() {
 
   return (
     <div className="relative mt-7 w-full lg:hidden">
-      {/* Close button */}
-      <button
-        className="absolute right-2 top-2 z-10 rounded-full bg-white p-1 shadow-md hover:bg-gray-100"
-        onClick={() => setIsVisible(false)}
-        aria-label="Cerrar carrusel"
-      >
-        <XIcon className="size-4 text-gray-600" />
-      </button>
       <Carousel
         className="flex w-full flex-col overflow-hidden"
         ref={carouselRef}
