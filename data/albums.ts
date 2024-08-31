@@ -7,52 +7,53 @@ export interface Album {
 export const listenNowAlbums: Album[] = [
   {
     name: "Esfuerzo Académico",
-    artist: "Ingeniería de Producción y Sistemas",
+    artist: "Dedicación, Metodología, Aprendizaje",
     cover: "/images/academic/tesis.webp",
   },
   {
     name: "Música",
-    artist: "Bandas musicales, grupos artísticos",
+    artist: "Disciplina, Creatividad, Escucha activa",
     cover: "/images/music/esquina.webp",
   },
   {
     name: "Liderazgo",
-    artist: "Docencia, Centro de Estudiantes, Equipos",
+    artist: "Proactividad, Estrategia, Comunicación",
     cover: "/images/people/people3.webp",
   },
   {
+    name: "Deporte",
+    artist: "Respeto, Equipo, Ganar, Perder, Estrategia",
+    cover: "/images/sports/sport12.webp",
+  },
+  {
     name: "Familia",
-    artist: "Valores y Tradiciones",
+    artist: "Unión, Soporte, Amor, Respeto, Tradición",
     cover: "/images/family/royale.webp",
   },
   {
-    name: "Deporte",
-    artist: "Representando a 🇻🇪 en 🇪🇸",
+    name: "Venezuela",
+    artist: "Tradición, Identidad, Cultura",
     cover: "/images/sports/sport13.webp",
   },
+
   {
     name: "Atención al detalle",
-    artist: "Pasión por la Excelencia",
+    artist: "Precisión, Perfeccionismo, Excelencia",
     cover: "/images/music/koga.webp",
   },
   {
     name: "Ingenio",
-    artist: "Nuevos Productos",
+    artist: "Innovación, Creatividad, Adaptabilidad",
     cover: "/images/engineering/engineering1.webp",
   },
   {
     name: "Impacto",
-    artist: "Influencia positiva",
+    artist: "Influencia, Motivación, Inspiración",
     cover: "/images/leadership/leadership1.webp",
   },
   {
-    name: "Fútbol",
-    artist: "Pasión por el Deporte",
-    cover: "/images/sports/sport12.webp",
-  },
-  {
     name: "Tecnología",
-    artist: "Curiosidad desde la Infancia",
+    artist: "Curiosidad, Vanguardia, Futuro",
     cover: "/images/engineering/tech.webp",
   },
 ]
