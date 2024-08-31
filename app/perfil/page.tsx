@@ -57,6 +57,11 @@ const achievements = [
     cover: "/images/achievements/achievement6.webp",
     artist: "UNIMET",
   },
+  {
+    name: "Premios Académicos",
+    cover: "/images/achievements/achievement7.webp",
+    artist: "Colegio Don Bosco",
+  },
 ]
 
 export default function ProfilePage() {
