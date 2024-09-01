@@ -159,7 +159,7 @@ export function AlbumArtwork({
               src={album.cover}
               alt={album.name}
               className={cn(
-                "md max-h-[80vh] max-w-[80vw] rounded object-contain transition-all",
+                "md max-h-[80vh] max-w-[80vw] rounded-md object-contain transition-all",
                 aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
               )}
             />
