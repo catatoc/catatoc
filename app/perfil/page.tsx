@@ -285,20 +285,6 @@ export default function ProfilePage() {
           <AccordionContent>
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               <div>
-                <p className="mt-2 text-lg">
-                  Mi experiencia en liderazgo se basa en{" "}
-                  <strong>tomar decisiones estratégicas</strong>,{" "}
-                  <strong>
-                    guiar equipos a creer en ellos, probar cosas nuevas
-                  </strong>{" "}
-                  y{" "}
-                  <strong>
-                    facilitar el crecimiento personal y profesional
-                  </strong>{" "}
-                  de aquellos a mi alrededor. Siempre apuntando a la excelencia,
-                  he liderado equipos en distintos contextos, desde el ámbito
-                  empresarial hasta el educativo.
-                </p>
                 <p className="mt-4 text-lg">
                   Como <strong>profesor universitario</strong>,{" "}
                   <strong>guía de campamento</strong>,{" "}
