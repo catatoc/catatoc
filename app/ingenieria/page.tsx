@@ -96,9 +96,9 @@ export default function EngineeringPage() {
             significativo en las empresas y en la sociedad.
           </p>
           <p>
-            Entender las palabras <strong>impacto</strong> e{" "}
-            <strong>ingenio</strong> son fundamentales para ser un buen
-            ingeniero.
+            Entender las palabras <strong>impacto</strong>,{" "}
+            <strong>experiencia</strong> e <strong>ingenio</strong> son
+            fundamentales para ser un buen ingeniero.
           </p>
           <Leaderboard
             title="Valores en Ingeniería"

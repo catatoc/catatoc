@@ -9,16 +9,16 @@ export const siteConfig = {
       href: "/",
     },
     {
+      title: "Ingeniería",
+      href: "/ingenieria",
+    },
+    {
       title: "Música",
       href: "/musica",
     },
     {
       title: "Deporte",
       href: "/deporte",
-    },
-    {
-      title: "Ingeniería",
-      href: "/ingenieria",
     },
   ],
   links: {

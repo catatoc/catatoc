@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
@@ -57,15 +57,15 @@ function FAQChat() {
   const faqs = [
     {
       question: "¿Quién soy?",
-      answer: `Mi nombre es Carlos Horacio Carrasquero Quintini. Soy ingeniero, músico y deportista, apasionado por la innovación y la mejora continua. Me gusta pensar que mi vida gira en torno al "impacto" y al "ingenio", pues constantemente busco mejorar lo que ya existe a través de un enfoque eficiente y novedoso. Mi objetivo es generar un impacto positivo en la sociedad, manteniendo un espíritu profesional y entusiasta que me permita ofrecer la mejor versión de mí`,
+      answer: `Mi nombre es Carlos Horacio Carrasquero Quintini. Soy ingeniero, músico y deportista venezolano, apasionado por la innovación, creación, transformación, mejora continua y buenas ideas. Me gusta pensar que mi vida gira en torno al impacto, ingenio y experiencias, pues constantemente busco crear y mejorar lo que ya existe a través de un enfoque eficiente y novedoso. Mi objetivo es generar un impacto positivo en la sociedad, manteniendo un espíritu profesional, entusiasta y de equipo que me permita ofrecer la mejor versión de mí.`,
     },
     {
       question: "¿Cuáles son mis pasiones?",
-      answer: `Mis tres grandes pasiones son la ingeniería, la música y los deportes. La ingeniería me permite abstraerme de lo cotidiano, observar las situaciones de otra perspectiva y resolver problemas; la música me da la capacidad de conectar y comunicar de manera única; y los deportes me enseñan disciplina, trabajo en equipo y resiliencia.`,
+      answer: `Mis tres grandes pasiones son la ingeniería, la música y los deportes. La ingeniería me permite abstraerme de lo cotidiano, observar las situaciones de otra perspectiva, crear, transformar, entender, mejorar y resolver problemas; la música me da la capacidad de conectar y comunicar de manera única; y los deportes me enseñan disciplina, trabajo en equipo y resiliencia.`,
     },
     {
       question: "¿Cómo puedo aportar al área de Innovación?",
-      answer: `Mi pasión por la ingeniería y la mejora continua es lo que más puede contribuir al área de Innovación y Nuevos Negocios. Estoy constantemente evaluando nuevas formas de mejorar procesos y productos, lo que se alinea con la misión del departamento de evaluar nuevas zonas de interés para productos y servicios que generen un impacto positivo en la sociedad.`,
+      answer: `Mi pasión por la ingeniería y la mejora continua es lo que más puede contribuir al área de Innovación y Nuevos Negocios. Estoy constantemente evaluando nuevas formas de crear, transformar, entender y mejorar procesos, productos y servicios. Lo que se alinea con la misión del departamento de evaluar nuevas zonas de interés para productos y servicios que generen un impacto positivo en la sociedad.`,
     },
     {
       question: "¿Qué hago en mi tiempo libre?",
@@ -102,6 +102,11 @@ function FAQChat() {
       } else {
         clearInterval(interval)
       }
+
+      // Scroll to the bottom after each character is added
+      if (chatEndRef.current) {
+        chatEndRef.current.scrollIntoView({ behavior: "smooth" })
+      }
     }, 30) // Increased typing speed
   }
 
@@ -125,7 +130,7 @@ function FAQChat() {
         ))}
       </div>
 
-      <div className="max-h-56 space-y-2 overflow-y-auto rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900 dark:text-white">
+      <div className="max-h-92 space-y-2 overflow-y-auto rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900 dark:text-white">
         {chat.map((message, index) => (
           <div
             key={index}
@@ -140,7 +145,7 @@ function FAQChat() {
                   : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300"
               }`}
               style={{
-                maxWidth: "75%",
+                maxWidth: "85%", // Increased from 75% to 85%
                 whiteSpace: "pre-wrap",
                 wordWrap: "break-word",
               }}
