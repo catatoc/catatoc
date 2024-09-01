@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 }
 
 export default function MusicPage() {
-  const emoji = "⚽"
+  
 
   return (
     <>
@@ -89,15 +89,13 @@ export default function MusicPage() {
                         <div className="custom-scrollbar w-screen overflow-x-auto whitespace-nowrap lg:w-full">
                           <div className="flex space-x-4 pb-4">
                             {listenNowAlbums.map((album) => (
-                              <EmojiConfetti key={album.name} emoji={emoji}>
-                                <AlbumArtwork
-                                  album={album}
-                                  className="w-[250px] shrink-0"
-                                  aspectRatio="portrait"
-                                  width={250}
-                                  height={330}
-                                />
-                              </EmojiConfetti>
+                              <AlbumArtwork
+                                album={album}
+                                className="w-[250px] shrink-0"
+                                aspectRatio="portrait"
+                                width={250}
+                                height={330}
+                              />
                             ))}
                           </div>
                         </div>

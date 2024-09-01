@@ -57,7 +57,7 @@ function FAQChat() {
   const faqs = [
     {
       question: "¿Quién soy?",
-      answer: `Mi nombre es Carlos Horacio Carrasquero Quintini. Soy ingeniero, músico y deportista venezolano, apasionado por la innovación, creación, transformación, mejora continua y buenas ideas. Me gusta pensar que mi vida gira en torno al impacto, ingenio y experiencias, pues constantemente busco crear y mejorar lo que ya existe a través de un enfoque eficiente y novedoso. Mi objetivo es generar un impacto positivo en la sociedad, manteniendo un espíritu profesional, entusiasta y de equipo que me permita ofrecer la mejor versión de mí.`,
+      answer: `Soy Carlos Horacio Carrasquero Quintini, ingeniero, músico y deportista venezolano, apasionado por la innovación, la mejora continua y las buenas ideas. Mi vida se centra en el impacto, el ingenio y las experiencias, creando o transformando lo existente con eficiencia y creatividad. Mi objetivo es generar un impacto positivo en la sociedad, manteniendo un espíritu profesional, entusiasta y de equipo.`,
     },
     {
       question: "¿Cuáles son mis pasiones?",
@@ -65,11 +65,11 @@ function FAQChat() {
     },
     {
       question: "¿Cómo puedo aportar al área de Innovación?",
-      answer: `Mi pasión por la ingeniería y la mejora continua es lo que más puede contribuir al área de Innovación y Nuevos Negocios. Estoy constantemente evaluando nuevas formas de crear, transformar, entender y mejorar procesos, productos y servicios. Lo que se alinea con la misión del departamento de evaluar nuevas zonas de interés para productos y servicios que generen un impacto positivo en la sociedad.`,
+      answer: `Mi pasión por la ingeniería y la mejora continua es lo que más puede contribuir al área de Innovación y Nuevos Negocios de Empresas Polar. Estoy constantemente evaluando nuevas formas de crear, transformar, entender y mejorar procesos, productos y servicios. Gracias a mi formación en Ingeniería de Producción y Sistemas, puedo comunicarme de manera efectiva con diferentes áreas y personas, comprendiendo y empatizando con sus perspectivas para llegar a soluciones integrales.`,
     },
     {
       question: "¿Qué hago en mi tiempo libre?",
-      answer: `En mi tiempo libre, disfruto de tocar instrumentos musicales, practicar deportes, explorar nuevas tecnologías y pasar tiempo con los que más quiero. Estas actividades no solo son un escape creativo, sino que también me ayudan a mantener una mente activa y siempre en búsqueda de nuevas ideas.`,
+      answer: `En mi tiempo libre, disfruto tocar instrumentos musicales, practicar deportes, explorar nuevas tecnologías y pasar tiempo con los que más quiero. Estas actividades no solo son un escape creativo, sino que también me ayudan a mantener una mente activa y siempre en búsqueda de nuevas ideas.`,
     },
   ]
 

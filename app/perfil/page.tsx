@@ -105,11 +105,7 @@ export default function ProfilePage() {
           <div className="flex w-96 gap-4 overflow-x-auto whitespace-nowrap rounded-md border p-6 md:w-full">
             <div className="flex space-x-12">
               {achievements.map((achievement) => (
-                <div
-                  className="relative cursor-pointer"
-                  key={achievement.name}
-                  onClick={() => setSelectedAchievement(achievement)}
-                >
+                <div className="relative cursor-pointer" key={achievement.name}>
                   <AlbumArtwork
                     album={achievement}
                     className="w-[150px] shrink-0"
@@ -209,12 +205,16 @@ export default function ProfilePage() {
                 <h3 className="text-xl font-semibold">🇻🇪 Venezuela</h3>
                 <p className="mt-2 text-lg">
                   Es sin duda un país especial para mí. Aquí crecí y aprendí la
-                  importancia de ser feliz sin importar los obstáculos. Un país
-                  que me ha dado una vida memorable y la oporunidad de rodearme
-                  de personas únicas; mis mejores amigos, mi familia y mi
-                  pareja. La riqueza de su cultura, la calidez de la gente y la
-                  belleza de sus paisajes naturales hacen de Caracas y Venezuela
-                  un hogar único.
+                  importancia de ser{" "}
+                  <strong>feliz sin importar los obstáculos</strong>. Un país
+                  que me ha dado una <strong>vida memorable</strong> y la
+                  oportunidad de rodearme de personas únicas; mis{" "}
+                  <strong>mejores amigos</strong>, mi <strong>familia</strong> y
+                  mi <strong>pareja</strong>. La riqueza de su{" "}
+                  <strong>cultura</strong>, la{" "}
+                  <strong>calidez de la gente</strong> y la{" "}
+                  <strong>belleza de sus paisajes naturales</strong> hacen de
+                  Caracas y Venezuela un hogar único.
                 </p>
 
                 <h3 className="mt-8 text-xl font-semibold">🇨🇦 Canadá</h3>
@@ -290,22 +290,24 @@ export default function ProfilePage() {
                   <strong>tomar decisiones estratégicas</strong>,{" "}
                   <strong>
                     guiar equipos a creer en ellos, probar cosas nuevas
-                  </strong>
-                  , y{" "}
+                  </strong>{" "}
+                  y{" "}
                   <strong>
                     facilitar el crecimiento personal y profesional
                   </strong>{" "}
-                  de aquellos a mi alrededor. Siempre apuntando a la excelencia
+                  de aquellos a mi alrededor. Siempre apuntando a la excelencia,
                   he liderado equipos en distintos contextos, desde el ámbito
                   empresarial hasta el educativo.
                 </p>
                 <p className="mt-4 text-lg">
                   Como <strong>profesor universitario</strong>,{" "}
                   <strong>guía de campamento</strong>,{" "}
-                  <strong>deportista</strong>, y <strong>músico</strong>, he
-                  aprendido a <strong>inspirar y motivar</strong> a los demás,
-                  adaptándome a diferentes audiencias y situaciones. En cada uno
-                  de estos roles, la <strong>disciplina</strong>, la{" "}
+                  <strong>deportista</strong>,{" "}
+                  <strong>representante estudiantil</strong> y{" "}
+                  <strong>músico</strong>, he aprendido a{" "}
+                  <strong>inspirar y motivar</strong> a los demás, adaptándome a
+                  diferentes audiencias y situaciones. En cada uno de estos
+                  roles, la <strong>disciplina</strong>, la{" "}
                   <strong>resiliencia</strong> y la{" "}
                   <strong>colaboración</strong> son esenciales. Creo en el
                   liderazgo que empodera, que permite a cada individuo
