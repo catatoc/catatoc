@@ -4,11 +4,13 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Album } from "@/data/albums"
 import confetti from "canvas-confetti"
+import { motion } from "framer-motion"
 import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
 import ImageWSkeleton from "./ImageWSkeleton"
+import { fadeInAnimation } from "./animations/fadeInAnimation"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -152,11 +154,12 @@ export function AlbumArtwork({
             >
               <XIcon />
             </button>
-            <img
+            <motion.img
+              {...fadeInAnimation}
               src={album.cover}
               alt={album.name}
               className={cn(
-                "max-h-[80vh] max-w-[80vw] object-contain transition-all",
+                "md max-h-[80vh] max-w-[80vw] rounded object-contain transition-all",
                 aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
               )}
             />

@@ -61,7 +61,7 @@ function FAQChat() {
     },
     {
       question: "¿Cuáles son mis pasiones?",
-      answer: `Mis tres grandes pasiones son la ingeniería, la música y los deportes. La ingeniería me permite abstraerme de lo cotidiano, observar las situaciones de otra perspectiva, crear, transformar, entender, mejorar y resolver problemas; la música me da la capacidad de conectar y comunicar de manera única; y los deportes me enseñan disciplina, trabajo en equipo y resiliencia.`,
+      answer: `Mis tres grandes pasiones son la ingeniería, la música y los deportes. La ingeniería me permite abstraerme de lo cotidiano, observar las situaciones desde otra perspectiva, crear, transformar, entender, mejorar y resolver problemas; la música me da la capacidad de conectar y comunicar de manera única; y los deportes me enseñan disciplina, trabajo en equipo y resiliencia.`,
     },
     {
       question: "¿Cómo puedo aportar al área de Innovación?",
