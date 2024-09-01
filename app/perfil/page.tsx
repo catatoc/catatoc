@@ -286,7 +286,8 @@ export default function ProfilePage() {
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               <div>
                 <p className="mt-4 text-lg">
-                  Como <strong>profesor universitario</strong>,{" "}
+                  Como <strong>ingeniero</strong>,{" "}
+                  <strong>profesor universitario</strong>,{" "}
                   <strong>guía de campamento</strong>,{" "}
                   <strong>deportista</strong>,{" "}
                   <strong>representante estudiantil</strong> y{" "}
