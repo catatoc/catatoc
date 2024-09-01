@@ -8,7 +8,6 @@ import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-import ImageWSkeleton from "./ImageWSkeleton"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -34,6 +33,7 @@ export function AlbumArtwork({
 }: AlbumArtworkProps) {
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
   const modalRef = useRef<HTMLDivElement>(null)
 
   const emoji = "⚽"
@@ -70,6 +70,10 @@ export function AlbumArtwork({
     triggerConfetti(emoji)
   }, [emoji])
 
+  const handleImageLoad = () => {
+    setIsImageLoaded(true)
+  }
+
   // Function to handle redirection to /profile
   const redirectToProfile = () => {
     router.push("/perfil")
@@ -78,6 +82,7 @@ export function AlbumArtwork({
   // Function to handle opening the modal
   const handleOpenModal = () => {
     setIsModalOpen(true)
+    setIsImageLoaded(false)
   }
 
   // Function to handle closing the modal
@@ -118,7 +123,7 @@ export function AlbumArtwork({
               handleOpenModal()
             }}
           >
-            <ImageWSkeleton
+            <img
               src={album.cover}
               alt={album.name}
               className={cn(
@@ -148,16 +153,18 @@ export function AlbumArtwork({
           <div ref={modalRef} className="relative p-4">
             <button
               onClick={handleCloseModal}
-              className="absolute right-0 top-0 z-30 m-2 text-3xl text-neutral-100"
+              className="absolute right-0 top-0 z-30 m-2 cursor-pointer text-3xl text-neutral-100"
             >
               <XIcon />
             </button>
-            <ImageWSkeleton
+            <img
               src={album.cover}
               alt={album.name}
+              onLoad={handleImageLoad}
               className={cn(
-                "max-h-[80vh] max-w-[80vw] object-contain transition-all",
-                aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
+                "max-h-[80vh] max-w-[80vw] object-contain transition-opacity duration-300",
+                aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square",
+                isImageLoaded ? "opacity-100" : "opacity-0"
               )}
             />
           </div>
