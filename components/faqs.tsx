@@ -64,24 +64,14 @@ function FAQChat() {
       answer: `Mis tres grandes pasiones son la ingeniería, la música y los deportes. La ingeniería me permite abstraerme de lo cotidiano, observar las situaciones desde otra perspectiva, crear, transformar, entender, mejorar y resolver problemas; la música me da la capacidad de conectar y comunicar de manera única; y los deportes me enseñan disciplina, trabajo en equipo y resiliencia.`,
     },
     {
-      question: "¿Cómo puedo aportar al área de Innovación?",
-      answer: `Mi pasión por la ingeniería y la mejora continua es lo que más puede contribuir al área de Innovación y Nuevos Negocios de Empresas Polar. Estoy constantemente evaluando nuevas formas de crear, transformar, entender y mejorar procesos, productos y servicios. Gracias a mi formación en Ingeniería de Producción y Sistemas, puedo comunicarme de manera efectiva con diferentes áreas y personas, comprendiendo y empatizando con sus perspectivas para llegar a soluciones integrales.`,
+      question: "¿Qué servicios ofrezco?",
+      answer: `Ofrezco la implementación y personalización de herramientas colaborativas como Lark, que permiten a las empresas mejorar la comunicación y la gestión interna. Para más información, puedes visitar <a href="/servicios/lark" target="_blank" class="text-blue-500 underline">este enlace</a>.`,
     },
     {
       question: "¿Qué hago en mi tiempo libre?",
       answer: `En mi tiempo libre, disfruto tocar instrumentos musicales, practicar deportes, explorar nuevas tecnologías y pasar tiempo con los que más quiero. Estas actividades no solo son un escape creativo, sino que también me ayudan a mantener una mente activa y siempre en búsqueda de nuevas ideas.`,
     },
   ]
-
-  const handleQuestionClick = (faq: { question: any; answer: any }) => {
-    setChat((prev) => [...prev, { type: "question", content: faq.question }])
-    setTyping(true)
-
-    setTimeout(() => {
-      setTyping(false)
-      simulateTyping(faq.answer)
-    }, 1000) // Delay for the response simulation
-  }
 
   const simulateTyping = (answer: string) => {
     let currentText = ""
@@ -107,7 +97,17 @@ function FAQChat() {
       if (chatEndRef.current) {
         chatEndRef.current.scrollIntoView({ behavior: "smooth" })
       }
-    }, 30) // Increased typing speed
+    }, 30)
+  }
+
+  const handleQuestionClick = (faq: { question: any; answer: any }) => {
+    setChat((prev) => [...prev, { type: "question", content: faq.question }])
+    setTyping(true)
+
+    setTimeout(() => {
+      setTyping(false)
+      simulateTyping(faq.answer)
+    }, 1000) // Simulación de retraso de respuesta
   }
 
   useEffect(() => {
@@ -138,20 +138,29 @@ function FAQChat() {
               message.type === "question" ? "justify-end" : "justify-start"
             }`}
           >
-            <div
-              className={`inline-block rounded-lg p-2 text-sm ${
-                message.type === "question"
-                  ? "bg-green-200 text-green-900 dark:bg-green-800 dark:text-green-200"
-                  : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300"
-              }`}
-              style={{
-                maxWidth: "85%", // Increased from 75% to 85%
-                whiteSpace: "pre-wrap",
-                wordWrap: "break-word",
-              }}
-            >
-              {message.content}
-            </div>
+            {message.type === "answer" ? (
+              <div
+                className={`inline-block rounded-lg p-2 text-sm ${"bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-300"}`}
+                style={{
+                  maxWidth: "85%",
+                  whiteSpace: "pre-wrap",
+                  wordWrap: "break-word",
+                }}
+                dangerouslySetInnerHTML={{ __html: message.content }} // Solo se usa cuando es una respuesta con HTML
+              />
+            ) : (
+              <div
+                className={`inline-block rounded-lg p-2 text-sm ${"bg-green-200 text-green-900 dark:bg-green-800 dark:text-green-200"}`}
+                style={{
+                  maxWidth: "85%",
+                  whiteSpace: "pre-wrap",
+                  wordWrap: "break-word",
+                }}
+              >
+                {message.content}{" "}
+                {/* Se renderiza como texto plano para preguntas */}
+              </div>
+            )}
           </div>
         ))}
 

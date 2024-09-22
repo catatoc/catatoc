@@ -7,8 +7,8 @@ export function Footer() {
     <footer className="z-50 border-t bg-background py-4 text-center">
       <div className="container">
         <p className="text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} Carlos Horacio Carrasquero Quintini.{" "}
-          Proceso de selección Empresas Polar 🇻🇪
+          &copy; {new Date().getFullYear()} Carlos Horacio Carrasquero Quintini{" "}
+          🇻🇪
         </p>
       </div>
     </footer>
