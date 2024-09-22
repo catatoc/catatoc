@@ -42,9 +42,9 @@ const Preloader = ({ assets, onLoaded, timeout = 10000 }: PreloaderProps) => {
     const updateProgress = (asset: Asset, status: string) => {
       loadedAssets += 1
       setProgress(Math.round((loadedAssets / totalAssets) * 100))
-      console.log(`Asset loaded: ${asset.src}, Status: ${status}`)
+      // console.log(`Asset loaded: ${asset.src}, Status: ${status}`)
       if (loadedAssets === totalAssets) {
-        console.log("All assets loaded or timed out.")
+        // console.log("All assets loaded or timed out.")
         onLoaded() // Notifica que la carga ha terminado
       }
     }
@@ -64,7 +64,7 @@ const Preloader = ({ assets, onLoaded, timeout = 10000 }: PreloaderProps) => {
             img.src = asset.src
             img.onload = () => {
               clearTimeout(timer)
-              console.log(`Loaded image: ${asset.src}`)
+              // console.log(`Loaded image: ${asset.src}`)
               resolve()
               updateProgress(asset, "loaded")
             }

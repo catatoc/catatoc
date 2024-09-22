@@ -91,6 +91,26 @@ export default function LarkPackages() {
     window.open(whatsappURL, "_blank")
   }
 
+  const handleSendReport = async () => {
+    try {
+      const response = await fetch("/api/sendReport", {
+        method: "POST",
+      })
+
+      console.log("Response:", response)
+      if (response.ok) {
+        const data = await response.json()
+        alert("Reporte enviado exitosamente")
+        console.log(data)
+      } else {
+        alert("Error al enviar el reporte")
+      }
+    } catch (error) {
+      console.error("Error:", error)
+      alert("Ocurrió un error al enviar el reporte")
+    }
+  }
+
   return (
     <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-12 text-center">
@@ -132,6 +152,13 @@ export default function LarkPackages() {
                 onClick={() => handleWhatsAppClick(pkg)}
               >
                 Contratar Ahora
+              </Button>
+              <Button
+                className="mt-4 w-full"
+                variant="outline"
+                onClick={handleSendReport}
+              >
+                Probar Envío de Reporte
               </Button>
             </CardFooter>
           </Card>
