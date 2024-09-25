@@ -1,8 +1,9 @@
-import { NextApiRequest } from "next"
 import { NextRequest, NextResponse } from "next/server"
 import { AppType, Client, Domain } from "@larksuiteoapi/node-sdk"
-import { PDFDocument, rgb } from "pdf-lib"
 import { ServerClient } from "postmark"
+import puppeteer from "puppeteer"
+
+import { logo } from "@/lib/logo"
 
 // Configuración de Lark y Postmark
 const appId = process.env.NEXT_PUBLIC_LARK_APP_ID || ""
@@ -23,162 +24,210 @@ const client = new Client({
   domain: Domain.Lark,
 })
 
-// Función para convertir Unix a formato dd/mm/yyyy
+// Función para convertir Unix a formato dd/mm/yyyy y validar fecha
 function unixToDateString(unixTime: number): string {
-  const date = new Date(unixTime * 1000)
+  const validTimestamp = unixTime > 0 && unixTime < 10000000000 // Validar rango de Unix timestamp
+  const date = validTimestamp ? new Date(unixTime * 1000) : new Date()
+
   const day = String(date.getDate()).padStart(2, "0")
   const month = String(date.getMonth() + 1).padStart(2, "0")
   const year = date.getFullYear()
+
   return `${day}/${month}/${year}`
+}
+
+// Formatear valores numéricos como moneda
+function formatCurrency(value: number, currency: string = "USD"): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+  }).format(value)
 }
 
 // Obtener registros de Lark y filtrar por "SILVIA CASIQUE"
 async function getLarkRecords(): Promise<any[]> {
-  console.log("Obteniendo registros de Lark...")
-
   try {
     const filter = `CurrentValue.[Persona] = "SILVIA CASIQUE"`
     const resp = await client.bitable.appTableRecord.list({
       path: { app_token: appToken, table_id: tableId },
-      params: { filter }, // Pasar el filtro como parte del params
+      params: { filter },
     })
 
-    console.log("Respuesta de Lark API:", resp)
-
     if (resp.data && Array.isArray(resp.data.items)) {
-      console.log("Registros filtrados:", resp.data.items)
       return resp.data.items
     } else {
-      console.error("Error: No se obtuvo un array de items.")
       throw new Error("Expected an array of items from Lark API")
     }
   } catch (error) {
-    console.error("Error obteniendo registros de Lark Bitable:", error)
     throw error
   }
 }
 
-// Manipular los registros obtenidos (solo los campos necesarios)
+// Manipular los registros obtenidos
 async function manipulateRecords(records: any[]): Promise<any[]> {
-  console.log("Manipulando registros...")
-
-  const manipulated = records.map((record) => ({
-    fecha: unixToDateString(record.fields.Fecha), // Convertir Unix a dd/mm/yyyy
+  return records.map((record) => ({
+    fecha: unixToDateString(record.fields.Fecha),
     persona: record.fields.Persona,
     cliente: record.fields.Cliente,
-    producto: record.fields.Producto,
-    unidades: record.fields.Unidades,
-    precioVenta: record.fields["Precio de Venta"],
+    producto: record.fields.Producto[0].text, // Mostrar el nombre del producto
+    unidades: parseFloat(record.fields.Unidades) || 0, // Asegurarse de que sea número
+    precioVenta: parseFloat(record.fields["Precio de Venta"]) || 0, // Asegurarse de que sea número
   }))
-
-  console.log("Registros manipulados:", manipulated)
-  return manipulated
 }
 
-// Generar PDF en formato base64 con una mejor plantilla
-async function generatePDFBase64(data: any[]): Promise<string> {
-  console.log("Generando PDF...")
+// Función para calcular los totales de unidades y precio de venta
+function calculateTotals(data: any[]): {
+  totalUnidades: number
+  totalPrecioVenta: number
+} {
+  const totalUnidades = data.reduce((acc, record) => acc + record.unidades, 0)
+  const totalPrecioVenta = data.reduce(
+    (acc, record) => acc + record.precioVenta,
+    0
+  )
+  return { totalUnidades, totalPrecioVenta }
+}
 
-  const pdfDoc = await PDFDocument.create()
-  const page = pdfDoc.addPage([600, 800])
-  const { width, height } = page.getSize()
+// Función para generar el PDF usando Puppeteer con logo, bordes redondeados y espacio para firma
+async function generatePDFBase64(
+  data: any[],
+  reportDate: string
+): Promise<string> {
+  console.log("Generando PDF con Puppeteer...")
 
-  // Título del reporte
-  page.drawText("Reporte de Registros de SILVIA CASIQUE", {
-    x: 50,
-    y: height - 50,
-    size: 24,
-    color: rgb(0, 0, 0),
-  })
+  // Calcular totales
+  const { totalUnidades, totalPrecioVenta } = calculateTotals(data)
 
-  let currentY = height - 100
+  const htmlContent = `
+    <html>
+    <head>
+      <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; }
+        .logo { text-align: center; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; border-radius: 10px; overflow: hidden; }
+        th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f4f4f4; }
+        tr:last-child { border-bottom: 2px solid black; }
+        .footer { text-align: center; margin-top: 20px; font-size: 12px; color: gray; }
+        .currency { text-align: right; }
+        .total-row { background-color: #f0f0f0; font-weight: bold; }
+        .signature { margin-top: 100px; text-align: center; }
+        .signature-line { margin-top: 50px; border-top: 1px solid #000; width: 200px; margin-left: auto; margin-right: auto; text-align: center; }
+        .signature-label { margin-top: 5px; font-size: 14px; }
+      </style>
+    </head>
+    <body>
+      <div class="logo">
+        <img src=${logo} alt="Company Logo" width="200" />
+      </div>
+      <h1>Reporte de Registros de SILVIA CASIQUE</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Producto</th>
+            <th>Unidades</th>
+            <th class="currency">Precio de Venta</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${data
+            .map(
+              (record, index) => `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${record.fecha}</td>
+              <td>${record.cliente}</td>
+              <td>${record.producto}</td>
+              <td>${record.unidades}</td>
+              <td class="currency">${formatCurrency(
+                record.precioVenta,
+                "USD"
+              )}</td>
+            </tr>`
+            )
+            .join("")}
+          <tr class="total-row">
+            <td colspan="4" style="text-align: right;">Totales:</td>
+            <td>${totalUnidades}</td>
+            <td class="currency">${formatCurrency(totalPrecioVenta, "USD")}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="signature">
+        <div class="signature-line"></div>
+        <div class="signature-label">Firma</div>
+        <div class="signature-label">Fecha: ${reportDate}</div>
+      </div>
+      <div class="footer">Reporte generado el ${reportDate}</div>
+    </body>
+    </html>
+  `
 
-  // Cuadro de información de registros
-  data.forEach((record, index) => {
-    const text = `${index + 1}. Fecha: ${record.fecha}, Cliente: ${
-      record.cliente
-    }, Producto: ${record.producto}, Unidades: ${
-      record.unidades
-    }, Precio de Venta: ${record.precioVenta}`
+  // Usar Puppeteer para convertir el HTML a PDF
+  const browser = await puppeteer.launch()
+  const page = await browser.newPage()
+  await page.setContent(htmlContent)
+  const pdfBuffer = await page.pdf({ format: "A4" })
+  await browser.close()
 
-    page.drawText(text, {
-      x: 50,
-      y: currentY,
-      size: 12,
-      color: rgb(0, 0, 0),
-    })
-    currentY -= 20
-  })
-
-  const pdfBytes = await pdfDoc.save()
-
-  console.log("PDF generado en formato base64.")
-  return Buffer.from(pdfBytes).toString("base64")
+  return Buffer.from(pdfBuffer).toString("base64")
 }
 
 // Enviar el correo con Postmark
 async function sendEmailWithPDF(
   base64PDF: string,
-  recipientEmail: string
+  recipientEmail: string,
+  pdfFileName: string
 ): Promise<any> {
-  console.log("Enviando correo con Postmark...")
-
-  try {
-    const response = await postmarkClient.sendEmail({
-      From: "info@mogosgroup.com",
-      To: recipientEmail,
-      Subject: "Reporte de registros de SILVIA CASIQUE",
-      HtmlBody:
-        "<strong>Adjunto encontrarás el reporte de registros de SILVIA CASIQUE.</strong>",
-      Attachments: [
-        {
-          Name: "report.pdf",
-          Content: base64PDF,
-          ContentType: "application/pdf",
-          ContentID: "",
-        },
-      ],
-    })
-
-    console.log("Correo enviado exitosamente:", response)
-    return response
-  } catch (error) {
-    console.error("Error enviando el correo con Postmark:", error)
-    throw error
-  }
+  return postmarkClient.sendEmail({
+    From: "info@mogosgroup.com",
+    To: recipientEmail,
+    Subject: `Reporte de registros de SILVIA CASIQUE - ${pdfFileName}`,
+    HtmlBody:
+      "<strong>Adjunto encontrarás el reporte de registros de SILVIA CASIQUE.</strong>",
+    Attachments: [
+      {
+        Name: `${pdfFileName}.pdf`,
+        Content: base64PDF,
+        ContentType: "application/pdf",
+        ContentID: "",
+      },
+    ],
+  })
 }
 
 // API handler en Next.js
 export async function POST(req: Request | NextRequest) {
-  console.log("Iniciando el handler de la API...")
-
   try {
     // Obtener registros desde Lark
-    console.log("Llamando a getLarkRecords()...")
     const records = await getLarkRecords()
 
-    // Manipular registros (solo los campos necesarios)
-    console.log("Llamando a manipulateRecords()...")
+    // Manipular registros
     const manipulatedRecords = await manipulateRecords(records)
 
-    // Generar el PDF
-    console.log("Llamando a generatePDFBase64()...")
-    const base64PDF = await generatePDFBase64(manipulatedRecords)
+    // Fecha del reporte
+    const reportDate = new Date().toLocaleDateString("es-VE")
+
+    // Generar el PDF con un nombre dinámico
+    const pdfFileName = `reporte_registros_${reportDate}_SILVIA_CASIQUE`
+    const base64PDF = await generatePDFBase64(manipulatedRecords, reportDate)
 
     // Enviar el correo con Postmark
-    console.log("Llamando a sendEmailWithPDF()...")
     const emailResponse = await sendEmailWithPDF(
       base64PDF,
-      "catatocarrasquero@gmail.com"
+      "catatocarrasquero@gmail.com",
+      pdfFileName
     )
 
-    console.log("Proceso completado. Enviando respuesta final...")
     return NextResponse.json({
       message: "Correo enviado exitosamente",
       emailResponse,
     })
   } catch (error) {
-    console.error("Error en el proceso:", error)
     return NextResponse.json(
       { message: "Error en el proceso", error: (error as Error).message },
       { status: 500 }
