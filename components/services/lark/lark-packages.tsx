@@ -17,7 +17,7 @@ const packages = [
     description:
       "Ideal para una implementación rápida y configuración inicial.",
     features: [
-      "Instalación y configuración de Lark en los 7 dispositivos",
+      "Instalación y configuración de Lark en los dispositivos de la empresa",
       "Creación de cuentas y asignación de permisos básicos",
       "Estructuración de chats y grupos por área/departamento",
       "Configuración básica de almacenamiento en la nube de Lark",
@@ -35,7 +35,7 @@ const packages = [
       "Todo lo del Paquete Básico",
       "Creación de grupos avanzados de trabajo",
       "Personalización de flujos de trabajo utilizando formularios simples",
-      "Capacitación inicial con 2 sesiones",
+      "Capacitación inicial con 4 sesiones",
       "Integración con otros servicios",
       "Soporte técnico durante el primer mes",
     ],
@@ -52,8 +52,8 @@ const packages = [
       "Automatización avanzada de flujos de trabajo",
       "Personalización avanzada de roles y permisos",
       "Configuración avanzada de documentos compartidos",
-      "Capacitación completa con 5 sesiones",
-      "Soporte técnico durante 3 meses",
+      "Capacitación completa con 8 sesiones",
+      "Soporte técnico durante 2 meses",
     ],
     price: "$4,000 USD",
   },
@@ -68,7 +68,7 @@ const packages = [
       "Auditoría inicial de los procesos actuales",
       "Personalización profunda de Lark",
       "Capacitación personalizada para el equipo de IT",
-      "Soporte técnico continuo durante 6 meses",
+      "Soporte técnico continuo durante 3 meses",
     ],
     price: "Consultar",
   },
@@ -118,8 +118,7 @@ export default function LarkPackages() {
           Paquetes de Servicios Lark
         </h1>
         <p className="mx-auto mt-3 max-w-md text-base sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
-          Optimiza la comunicación y colaboración de tu empresa con nuestras
-          soluciones personalizadas.
+          Optimiza la comunicación y colaboración de tu empresa.
         </p>
       </div>
 
@@ -154,7 +153,7 @@ export default function LarkPackages() {
                 Contratar Ahora
               </Button>
               <Button
-                className="mt-4 w-full"
+                className="mt-4 hidden w-full"
                 variant="outline"
                 onClick={handleSendReport}
               >

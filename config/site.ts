@@ -13,6 +13,10 @@ export const siteConfig = {
       href: "/ingenieria",
     },
     {
+      title: "Servicios",
+      href: "/servicios/lark",
+    },
+    {
       title: "Música",
       href: "/musica",
     },
