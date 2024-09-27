@@ -112,7 +112,7 @@ export default function LarkPackages() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+    <div className="container mx-auto px-4 py-12 lg:px-8">
       <div className="mb-12 text-center">
         <h1 className="text-4xl font-extrabold sm:text-5xl md:text-6xl">
           Paquetes de Servicios Lark
