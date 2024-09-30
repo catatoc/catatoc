@@ -22,8 +22,9 @@ const packages = [
       "Estructuración de chats y grupos por área/departamento",
       "Configuración básica de almacenamiento en la nube de Lark",
       "Integración con calendarios y correo electrónico",
+      "Capacitación inicial con 2 sesiones",
     ],
-    price: "$2,000 USD",
+    price: "$1,500 USD",
   },
   {
     name: "Silver",
@@ -35,6 +36,7 @@ const packages = [
       "Todo lo del Paquete Básico",
       "Creación de grupos avanzados de trabajo",
       "Personalización de flujos de trabajo utilizando formularios simples",
+      "Automatización de tareas básicas",
       "Capacitación inicial con 4 sesiones",
       "Integración con otros servicios",
       "Soporte técnico durante el primer mes",
