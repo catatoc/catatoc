@@ -56,6 +56,7 @@ const packages = [
       "Configuración avanzada de documentos compartidos",
       "Capacitación completa con 8 sesiones",
       "Soporte técnico durante 2 meses",
+      "Metodología de mejora continua con EOS",
     ],
     price: "$4,000 USD",
   },
