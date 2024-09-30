@@ -24,7 +24,7 @@ const packages = [
       "Integración con calendarios y correo electrónico",
       "Capacitación inicial con 2 sesiones",
     ],
-    price: "$1,500 USD",
+    price: "$1,000 USD",
   },
   {
     name: "Silver",
@@ -41,7 +41,7 @@ const packages = [
       "Integración con otros servicios",
       "Soporte técnico durante el primer mes",
     ],
-    price: "$3,000 USD",
+    price: "$2,000 USD",
   },
   {
     name: "Gold",
@@ -58,7 +58,7 @@ const packages = [
       "Soporte técnico durante 2 meses",
       "Metodología de mejora continua con EOS",
     ],
-    price: "$4,000 USD",
+    price: "$3,000 USD",
   },
   {
     name: "Platinum",
